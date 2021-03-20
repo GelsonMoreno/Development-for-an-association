@@ -21,9 +21,40 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title>Hello World!</title>
+    <?php $this->head() ?>
 </head>
+<?php $this->beginBody() ?>
 <body>
-    Hello World!
+<header>
+    <div id ="navbar">
+    </div>
+    <div id ="subnavbar">
+        <a id="logo" href="/">
+          <?= Html::img('img/logo.png');?>
+        </a>
+        <div id="login_form">
+            <form action="#">
+                <label for="user_id">ID do Usuario</label>
+                <input id="user_id" type="text">
+                <label for="user_password">Senha</label>
+                <input id="user_password" type="password">
+                <button id="login_button" type="submit">Login </button>
+            </form>
+        </div>
+    </div>
+
+</header>
+<div id="content">
+  <?= $content ?>
+</div>
+<footer>
+    <div id="footer">
+        <p>&copy; My Company Y') </p>
+    </div>
+</footer>
 </body>
-</html>
+
+<?php $this->endBody() ?>
+
+
 <?php $this->endPage() ?>
