@@ -26,10 +26,9 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <body>
 <header>
-    <div id ="navbar">
-    </div>
+    <div id ="navbar"></div>
     <div id ="subnavbar">
-        <a id="logo" href="/">
+       <a id="logo" href="/">
           <?= Html::img('img/logo.png');?>
         </a>
         <div id="login_form">
