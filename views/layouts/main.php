@@ -7,6 +7,8 @@ use yii\helpers\Html;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
+
+$login_form = $this->params['login_form'];
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -26,16 +28,12 @@ AppAsset::register($this);
     <div id ="subnavbar">
        <a id="logo" href="/">
           <?= Html::img('img/logo.png') ;?>
-        </a>
-        <div id="login_form">
-            <form action="#">
-                <label for="user_id">ID do Usuario</label>
-                <input id="user_id" type="text">
-                <label for="user_password">Senha</label>
-                <input id="user_password" type="password">
-                <button id="login_button" type="submit">Login </button>
-            </form>
-        </div>
+       </a>
+      <?php if(Yii::$app->user->getIsGuest()): ?>
+        <?= $this->render('login_form', ['model' => $login_form]);?>
+      <?php else: ?>
+          <a href="/index.php?r=login/logout">Logout</a>
+      <?php endif ?>
     </div>
 
 

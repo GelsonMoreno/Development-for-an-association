@@ -8,11 +8,6 @@ use yii\db\ActiveRecord;
 
 class Contact_us  extends ActiveRecord
 {
-    public $name;
-    public $email;
-    public $number;
-    public $description;
-
     public function rules()
     {
       return [

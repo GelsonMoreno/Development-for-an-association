@@ -46,6 +46,11 @@ O Brigantia EcoPark tem como missão o acolhimento de empresas de base tecnológ
                     Foi submetido
                 </div>
             <?php endif; ?>
+            <script>
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href );
+                }
+            </script>
         </div>
     </div>
     <div class='column'>
