@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Contact_us;
 use app\models\LoginForm;
+use app\models\News;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -21,6 +22,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->view->params['login_form'] = new LoginForm();
+        $news = News::find()->orderBY('date desc')->all();
         $contact_us = new Contact_us();
         $submitted = false;
 
@@ -28,10 +30,9 @@ class SiteController extends Controller
           $submitted = true;
           $contact_us->save();
           $contact_us = new Contact_us;
-          return $this->render('index', ['model' =>$contact_us, 'submitted' => $submitted]);
-        }else{
-          return $this->render('index', ['model' =>$contact_us, 'submitted' => $submitted]);
         }
+        return $this->render('index', ['model' =>$contact_us, 'submitted' => $submitted, 'news' => $news]);
+
 
 
     }

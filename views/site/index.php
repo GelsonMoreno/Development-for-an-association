@@ -58,10 +58,10 @@ O Brigantia EcoPark tem como missão o acolhimento de empresas de base tecnológ
            <div class="wall_title_green">Notícias</div>
           <?= Html::img('img/logo.png', $options = ['class'=>'imgIndexNews']); ?>
            <ul class="main-content_news">
-            <?php foreach ($news_examples as $news): ?>
+            <?php foreach ($news as $news_data): ?>
                 <li>
-                    <h3 class="title_news"><?= Html::img('img/seta.png', $options = ['class'=>'imgIndexSeta']); ?><?= $news['title'] ?></h3>
-                    <p class="description_news"><?= $news['description'] ?></p>
+                    <h3 class="title_news"><?= Html::img('img/seta.png', $options = ['class'=>'imgIndexSeta']); ?><?= $news_data->title ?></h3>
+                    <p class="description_news"><?= $news_data->text ?></p>
                 </li>
             <?php endforeach;?>
            </ul>

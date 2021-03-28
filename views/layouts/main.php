@@ -8,7 +8,7 @@ use app\assets\AppAsset;
 
 AppAsset::register($this);
 
-$login_form = $this->params['login_form'];
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -30,8 +30,9 @@ $login_form = $this->params['login_form'];
           <?= Html::img('img/logo.png') ;?>
        </a>
       <?php if(Yii::$app->user->getIsGuest()): ?>
-        <?= $this->render('login_form', ['model' => $login_form]);?>
+        <?= $this->render('login_form', ['model' => $this->params['login_form']]);?>
       <?php else: ?>
+      <?=  Yii::$app->user->identity->name ?>
           <a href="/index.php?r=login/logout">Logout</a>
       <?php endif ?>
     </div>
