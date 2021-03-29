@@ -21,6 +21,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+      if (!\Yii::$app->user->isGuest){
+        return $this->redirect(['documents/index']);
+      }
         $this->view->params['login_form'] = new LoginForm();
         $news = News::find()->orderBY('date desc')->all();
         $contact_us = new Contact_us();

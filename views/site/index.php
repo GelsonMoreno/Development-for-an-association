@@ -1,32 +1,6 @@
 <?php
 use \yii\bootstrap\ActiveForm;
 use \yii\helpers\Html;
-
-$news_examples = [
-        [
-                'title' => 'Brigantia EcoPark',
-                'description' => 'O Parque de Ciência e Tecnologia de Trás-os-Montes e Alto Douro é constituído pelo Brigantia EcoPark em Bragança e pelo Régia-Douro Park em Vila Real.
-O Brigantia EcoPark tem como missão o acolhimento de empresas de base tecnológica e indústrias de baixo impacto...
-'
-        ],
-  [
-    'title' => 'Brigantia EcoPark',
-    'description' => 'O Parque de Ciência e Tecnologia de Trás-os-Montes e Alto Douro é constituído pelo Brigantia EcoPark em Bragança e pelo Régia-Douro Park em Vila Real.
-O Brigantia EcoPark tem como missão o acolhimento de empresas de base tecnológica e indústrias de baixo impacto...
-'
-  ],[
-    'title' => 'Brigantia EcoPark',
-    'description' => 'O Parque de Ciência e Tecnologia de Trás-os-Montes e Alto Douro é constituído pelo Brigantia EcoPark em Bragança e pelo Régia-Douro Park em Vila Real.
-O Brigantia EcoPark tem como missão o acolhimento de empresas de base tecnológica e indústrias de baixo impacto...
-'
-  ],[
-    'title' => 'Brigantia EcoPark',
-    'description' => 'O Parque de Ciência e Tecnologia de Trás-os-Montes e Alto Douro é constituído pelo Brigantia EcoPark em Bragança e pelo Régia-Douro Park em Vila Real.
-O Brigantia EcoPark tem como missão o acolhimento de empresas de base tecnológica e indústrias de baixo impacto...
-'
-  ]
-];
-
 ?>
 
 <div class='row'>
