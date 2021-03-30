@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\BaseStringHelper;
 ?>
 <div class='row'>
     <div class="col-sm">
@@ -15,41 +16,21 @@
                 <th>Tipo</th>
                 <th></th>
             </tr>
+          <?php foreach ($documents as $document_data): ?>
             <tr>
-                <td>Brigantia EcoPark</td>
-                <td><?= yii\helpers\BaseStringHelper::truncate('Brigantia EcoParkBrigantia EcoParkBrigantia EcoParkBrigantia EcoParkBrigantia EcoPark', 50) ?></td>
-                <td>20/12/2020</td>
-                <td>PDF</td>
-                <td># # #</td>
-
-
+                <td><?= $document_data->title ?></td>
+                <td> <?= yii\helpers\BaseStringHelper::truncate( $document_data->description, 40) ?></td>
+                <td><?= $document_data->date ?></td>
+                <td><?= $document_data->type ?></td>
+                <td class="td_button">
+                    <a href="#"><i class="bi bi-file-earmark-text-fill"></i></a>
+                    <a href="#"><i class="bi bi-arrow-down"></i></a>
+                    <a href="#"><i class="bi bi-trash"></i></a>
+                </td>
             </tr>
-            <tr>
-                <td>Brigantia EcoPark</td>
-                <td><?= yii\helpers\BaseStringHelper::truncate('Brigantia EcoParkBrigantia EcoParkBrigantia EcoParkBrigantia EcoParkBrigantia EcoPark', 50) ?></td>
-                <td>20/12/2020</td>
-                <td>PDF</td>
-                <td># # #</td>
-
-            </tr>
-            <tr>
-                <td>Brigantia EcoPark</td>
-                <td><?= yii\helpers\BaseStringHelper::truncate('Brigantia EcoParkBrigantia EcoParkBrigantia EcoParkBrigantia EcoParkBrigantia EcoPark', 50) ?></td>
-                <td>20/12/2020</td>
-                <td>PDF</td>
-                <td># # #</td>
-
-            </tr>
-            <tr>
-                <td>Brigantia EcoPark</td>
-                <td><?= yii\helpers\BaseStringHelper::truncate('Brigantia EcoParkBrigantia EcoParkBrigantia EcoParkBrigantia EcoParkBrigantia EcoPark', 50) ?></td>
-                <td>20/12/2020</td>
-                <td>PDF</td>
-                <td># # #</td>
-
-            </tr>
+          <?php endforeach;?>
         </table>
     </div>
 
 </div>
-<!--<div>this is documents</div>-->
+

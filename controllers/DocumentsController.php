@@ -4,6 +4,7 @@
 namespace app\controllers;
 
 
+use app\models\Documents;
 use yii\web\Controller;
 
 class DocumentsController extends Controller
@@ -12,7 +13,8 @@ class DocumentsController extends Controller
     if (\Yii::$app->user->isGuest){
       return $this->goHome();
     }
-    return $this->render('index');
+    $documents = Documents::find()->orderBy('date desc')->all();
+    return $this->render('index',['documents' => $documents]);
 
   }
 }
