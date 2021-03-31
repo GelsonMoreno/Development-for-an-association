@@ -68,4 +68,9 @@ class User extends ActiveRecord implements IdentityInterface
     return '{{%users}}';
 
   }
+
+  public function isAdmin(): bool
+  {
+    return $this->User_types_id == 1;
+  }
 }

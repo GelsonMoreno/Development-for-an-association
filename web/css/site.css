@@ -245,8 +245,8 @@ img {
     border: none;
     color: #161515;
 }
-.left_column_button:active{
-    background: black;
+.active, .left_column_button:hover{
+    background: #6F6F6F;
 }
 
 .content_header{
@@ -335,6 +335,9 @@ th, td {
     color: black;
 }
 .bi-trash{
+    color: black;
+}
+.bi-pen{
     color: black;
 }
 
