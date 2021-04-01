@@ -73,4 +73,16 @@ class User extends ActiveRecord implements IdentityInterface
   {
     return $this->User_types_id == User_types::admin_group()->id;
   }
+  public function isAssociated(): bool
+  {
+        return $this->User_types_id == User_types::associated_group()->id;
+  }
+  public function isEmployee(): bool
+  {
+        return $this->User_types_id == User_types::employee_group()->id;
+  }
+  public function isBoard(): bool
+  {
+        return $this->User_types_id == User_types::board_group()->id;
+  }
 }
