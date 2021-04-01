@@ -325,19 +325,23 @@ th, td {
     justify-content: space-evenly;
     padding: 6px 20px 0px 0px;
 }
-
-.bi-file-earmark-text-fill{
+.td_button a {
     color: black;
 }
 
-.bi-arrow-down{
-    border-bottom: 1px solid black;
+
+
+/*.bi-file-earmark-text-fill{
     color: black;
 }
-.bi-trash{
+
+.bi-trash-fill{
     color: black;
 }
-.bi-pen{
+.bi-pen-fill{
+    color: black;
+}
+.bi-eye-fill{
     color: black;
 }
 

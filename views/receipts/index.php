@@ -23,9 +23,10 @@
                   <td><?= $receipts_data->value ?></td>
                   <td><?= $receipts_data->address ?></td>
                   <td class="td_button">
+                      <a href="#"><i class="bi bi-eye-fill"></i></i></a>
                       <a href="#"><i class="bi bi-file-earmark-text-fill"></i></a>
-                      <a href="#"><i class="bi bi-arrow-down"></i></a>
-                      <a href="#"><i class="bi bi-trash"></i></a>
+                      <a href="#"><i class="bi bi-pen-fill"></i></a>
+                      <a href="#"><i class="bi bi-trash-fill"></i></a>
                   </td>
               </tr>
           <?php endforeach;?>

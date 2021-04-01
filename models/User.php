@@ -71,6 +71,6 @@ class User extends ActiveRecord implements IdentityInterface
 
   public function isAdmin(): bool
   {
-    return $this->User_types_id == 1;
+    return $this->User_types_id == User_types::admin_group()->id;
   }
 }
