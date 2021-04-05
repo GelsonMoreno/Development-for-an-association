@@ -289,8 +289,12 @@ img {
     text-align: center;
     color: #FFFFFF;
     border-radius: 8px;
-    border: none;
     margin-right: 30px;
+    line-height: 35px;
+}
+a:hover, a:focus {
+    color: white;
+    text-decoration: none;
 }
 
 /*Documents content*/
@@ -326,22 +330,6 @@ th, td {
     padding: 6px 20px 0px 0px;
 }
 .td_button a {
-    color: black;
-}
-
-
-
-/*.bi-file-earmark-text-fill{
-    color: black;
-}
-
-.bi-trash-fill{
-    color: black;
-}
-.bi-pen-fill{
-    color: black;
-}
-.bi-eye-fill{
     color: black;
 }
 

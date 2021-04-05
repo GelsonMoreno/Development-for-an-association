@@ -1,12 +1,12 @@
 <?php
 
-?>
+use yii\helpers\Html; ?>
 <div class='row'>
     <div class="col-sm">
         <?= $this->render('../shared/left_column', ['active' => 'documents']);?>
     </div>
     <div class="col-lg">
-      <?= $this->render('../shared/content_header');?>
+      <?= $this->render('../shared/content_header', ['new_url'=>'index.php?r=documents/new']);?>
         <table id="t01">
             <tr>
                 <th>Título</th>
@@ -22,10 +22,14 @@
                 <td><?= $document_data->date ?></td>
                 <td><?= $document_data->type ?></td>
                 <td class="td_button">
-                    <a href="#"><i class="bi bi-eye-fill"></i></a>
-                    <a href="#"><i class="bi bi-file-earmark-text-fill"></i></a>
-                    <a href="#"><i class="bi bi-pen-fill"></i></a>
-                    <a href="#"><i class="bi bi-trash-fill"></i></a>
+                    <a href="/index.php?r=documents/show&document_id=<?= $document_data->id ?>"><i class="bi bi-eye-fill"></i></a>
+                    <a href="<?= $document_data->documentUrlForDownload() . '&inline=true' ?>" target="_blank"><i class="bi bi-file-earmark-text-fill"></i></a>
+                    <a href="/index.php?r=documents/update&document_id=<?= $document_data->id ?>">
+                        <i class="bi bi-pen-fill"></i>
+                    </a>
+                    <a href="/index.php?r=documents/delete&document_id=<?= $document_data->id ?>" data-confirm="Are you sure?">
+                        <i class="bi bi-trash-fill"></i>
+                    </a>
                 </td>
             </tr>
           <?php endforeach;?>
