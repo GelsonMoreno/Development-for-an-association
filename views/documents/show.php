@@ -8,11 +8,27 @@ use \yii\helpers\Html;
     </div>
     <div class="col-lg">
 
-        <div>Detalhe do documento</div>
-        <div><?= $model->title ?></div>
-        <div>
-            <a href="<?= $model->documentUrlForDownload() ?>">document</a>
+        <div class="wall_title_blue">Detalhe do documento</div>
+        <div class="form-group">
+            <label>Título</label><br>
+            <div class="label_indx"><?= $model->title ?></div>
+            <label>Tipo</label><br>
+            <div class="label_indx1"><?= $model->type ?></div>
+            <label>Data</label><br>
+            <div class="label_indx1"><?= $model->date ?></div>
+            <label>Descrição</label><br>
+            <div class="description"><?= $model->description ?></div>
+            <label>File</label><br>
+            <div class="file_button">
+                 <div class="label_indx1">
+                     <a href="<?= $model->documentUrlForDownload() ?>"><i class="bi bi-file-earmark-text-fill"></i>Documento</a>
+                 </div>
+            </div>
+            <div class="button_cancelar_alterar">
+              <?= Html::a('Voltar', ['/documents/index'], ['class'=>'btn btn-primary']) ?>
+            </div>
         </div>
+
 
     </div>
 

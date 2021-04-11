@@ -40,6 +40,9 @@ class DocumentsController extends Controller
     $documents = Documents::findOne(['id' => $document_id]);
 
     if($documents->load(Yii::$app->request->post()) && $documents->validate()){
+      if($documents->file == '' or $documents->file == Null){
+        $documents->setPreviousFile();
+      }
       $documents->update();
       return $this->redirect(['documents/index']);
     }

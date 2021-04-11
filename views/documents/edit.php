@@ -8,7 +8,7 @@ use \yii\helpers\Html;
   </div>
   <div class="col-lg">
 
-    <div>Editar Documento</div>
+    <div class="wall_title_blue">Editar Documento</div>
     <div>
       <?php $form = ActiveForm::begin([
         'action' => ['documents/update', 'document_id' => $model->id],
@@ -16,8 +16,9 @@ use \yii\helpers\Html;
       ]); ?>
       <?= $this->render('form', ['model' => $model, 'form' => $form]);?>
 
-      <?= Html::submitButton('Alterar') ?>
-      <?= Html::a('Cancel', ['/documents/index'], ['class'=>'btn btn-primary']) ?>
+      <div class="button_cancelar_alterar"><?= Html::submitButton('Alterar', ['class'=>'btn btn-primary']) ?>
+        <?= Html::a('Cancel', ['/documents/index'], ['class'=>'btn btn-primary']) ?>
+      </div>
       <?php ActiveForm::end(); ?>
     </div>
 

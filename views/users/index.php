@@ -6,6 +6,16 @@
   </div>
   <div class="col-lg">
     <?= $this->render('../shared/content_header');?>
+      <div class="content_header_users">
+          <div class="w3-show-inline-block">
+              <div class="w3-bar">
+                  <button class="w3-bar-item w3-button w3-black">Button</button>
+                  <button class="w3-bar-item w3-button w3-teal">Button</button>
+                  <button class="w3-bar-item w3-button w3-red">Button</button>
+              </div>
+          </div>
+      </div>
+      <div></div>
       <table id="t01">
           <tr>
               <th>ID</th>

@@ -154,8 +154,24 @@ img {
     background: #C4C4C4;
     border-radius: 3px;
     border: 0.5px solid #C4C4C4;
+    line-height: 40px;
 }
+#text_input_field{
+    width: 623px;
+    height: 40px;
+    background: #C4C4C4;
+    border-radius: 3px;
+    border: 0.5px solid #C4C4C4;
+    line-height: 40px;
 
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+    margin-top: 5px;
+}
 
 .control-label{
     width: 100%;
@@ -167,6 +183,7 @@ img {
     background: #C4C4C4;
     border-radius: 3px;
     border: 0.5px solid #C4C4C4;
+    line-height: 40px;
 }
 
 .enviar_indx{
@@ -216,7 +233,7 @@ img {
 
 .left_column{
     width: 265px;
-    min-height: 602px;
+    min-height: 685px;
     background: #AEADAD;
     border-radius: 1px;
     margin-top: 7px;
@@ -255,6 +272,19 @@ img {
     height: 70px;
     left: 14px;
     top: 11px;
+    background: #8D8D8D;
+    border-radius: 3px;
+    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.content_header_users{
+
+    width: 100%;
+    height: 35px;
+    left: 14px;
+    /* top: -47px; */
     background: #8D8D8D;
     border-radius: 3px;
     margin-top: 7px;
@@ -331,6 +361,23 @@ th, td {
 }
 .td_button a {
     color: black;
+}
+.button_cancelar_alterar{
+    margin-left: 581px;
+    margin-top: 15px;
+    float: left;
+}
+.btn-primary {
+    color: #fff;
+    background-color: black;
+    border: none;
+}
+.btn-primary:hover{
+    background: black;
+}
+.file_button a{
+    color: black;
+
 }
 
 /*--------footer------*/

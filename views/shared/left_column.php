@@ -11,10 +11,10 @@
             <li><a href="/index.php?r=news/index"><button class="left_column_button <?= $active == 'news' ? 'active': '' ?>">Conteudos</button></a></li>
 
         <?php elseif (Yii::$app->user->identity->isAssociated()):?>
-            <li><a href=""><button class="left_column_button <?= $active == 'documents' ? 'active': '' ?>">Perfil</button></a></li>
-            <li><a href=""><button class="left_column_button <?= $active == 'documents' ? 'active': '' ?>">Definições</button></a></li>
+            <li><a href=""><button class="left_column_button <?= $active == 'receips' ? 'active': '' ?>">Perfil</button></a></li>
+            <li><a href=""><button class="left_column_button <?= $active == 'receips' ? 'active': '' ?>">Definições</button></a></li>
             <li><a href="/index.php?r=documents/index"><button class="left_column_button <?= $active == 'documents' ? 'active': '' ?>">Documentos</button></a></li>
-            <li><a href=""><button class="left_column_button <?= $active == 'documents' ? 'active': '' ?>">Log Out</button></a></li>
+            <li><a href=""><button class="left_column_button <?= $active == 'receips' ? 'active': '' ?>">Log Out</button></a></li>
 
         <?php elseif (Yii::$app->user->identity->isBoard()):?>
             <li><a href="/index.php?r=documents/index"><button class="left_column_button <?= $active == 'documents' ? 'active': '' ?>">Documentos</button></a></li>

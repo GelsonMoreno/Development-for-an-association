@@ -21,12 +21,4 @@ use \yii\helpers\Html;
       <?= Html::submitButton('Login', ['class' => '', 'name' => 'login-button', 'id'=>'login_button']) ?>
   <?php ActiveForm::end(); ?>
 
-
-  <!--<form action="#">
-    <label for="user_id">ID do Usuario</label>
-    <input id="user_id" type="text">
-    <label for="user_password">Senha</label>
-    <input id="user_password" type="password">
-    <button id="login_button" type="submit">Login </button>
-  </form>-->
 </div>
