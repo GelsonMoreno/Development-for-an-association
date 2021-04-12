@@ -22,5 +22,11 @@ class UsersController extends Controller
     return User::find()->orderBy('id')->all();
   }
 
-
+  public function actionSettings(){
+    if (\Yii::$app->user->isGuest){
+      return $this->goHome();
+    }
+    $users = $this->get_records();
+    return $this->render('settings', ['users' => $users]);
+  }
 }
