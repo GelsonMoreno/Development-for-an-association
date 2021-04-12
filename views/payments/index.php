@@ -6,6 +6,14 @@
   </div>
   <div class="col-lg">
     <?= $this->render('../shared/content_header');?>
+      <div class="content_header_pay">
+              <div class="w3-show-inline-block">
+                  <div class="w3-bar">
+                      <div class="saldo_pay">Saldo</div>
+                      <div class="value_pay">2000.00</div>
+                  </div>
+              </div>
+      </div>
       <table id="t01">
           <tr>
               <th>Data</th>

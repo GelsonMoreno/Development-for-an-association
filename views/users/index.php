@@ -9,13 +9,13 @@
       <div class="content_header_users">
           <div class="w3-show-inline-block">
               <div class="w3-bar">
-                  <button class="w3-bar-item w3-button w3-black">Button</button>
-                  <button class="w3-bar-item w3-button w3-teal">Button</button>
-                  <button class="w3-bar-item w3-button w3-red">Button</button>
+                  <button class="type_user">Associados</button>
+                  <button class="type_user">Funcionários</button>
+                  <button class="type_user">Direção</button>
+                  <button class="type_user">Administrantes</button>
               </div>
           </div>
       </div>
-      <div></div>
       <table id="t01">
           <tr>
               <th>ID</th>

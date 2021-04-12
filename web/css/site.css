@@ -251,7 +251,7 @@ label {
     height: 51px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     margin-left: 40px;
-    margin-top: 35px;
+    margin-top: 45px;
     background: #E5E5E5;
     font-family: Roboto;
     font-style: normal;
@@ -279,19 +279,7 @@ label {
     align-items: center;
     justify-content: space-between;
 }
-.content_header_users{
 
-    width: 100%;
-    height: 35px;
-    left: 14px;
-    /* top: -47px; */
-    background: #8D8D8D;
-    border-radius: 3px;
-    margin-top: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
 .search_header{
     width: 362px;
@@ -378,6 +366,75 @@ th, td {
 .file_button a{
     color: black;
 
+}
+/*----UtilizadoresPage----*/
+.content_header_users{
+
+    width: 100%;
+    height: 35px;
+    left: 14px;
+    background: #8D8D8D;
+    border-radius: 3px;
+    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.type_user{
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    color: black;
+    cursor: pointer;
+    float: left;
+    width: 129px;
+    height: 35px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-weight: bold;
+    text-align: center;
+}
+.type_user:hover{
+    background: #E5E5E5;
+}
+/*----Payments----*/
+.saldo_pay{
+    background-color: #DE0F0F;
+    float: left;
+    width: 75px;
+    line-height: 35px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    font-family: Roboto;
+    color: black;
+}
+.value_pay{
+    float: left;
+    width: 129px;
+    text-align: center;
+    background: #262222;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+    color: #FFFFFF;
+    border-radius: 8px;
+    line-height: 35px;
+}
+.content_header_pay{
+
+    width: 100%;
+    height: 35px;
+    left: 14px;
+    background: #8D8D8D;
+    border-radius: 3px;
+    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
 }
 
 /*--------footer------*/
