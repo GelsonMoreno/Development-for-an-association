@@ -14,7 +14,7 @@ use \yii\helpers\Html;
             'template' => '{label}{input}',
     ],
   ]); ?>
-      <?= $form->field($model, 'name',['inputOptions'=>['id'=> 'user_id', 'class' => ''], 'labelOptions'=>['class'=>'']])->textInput(['autofocus' => true]) ?>
+      <?= $form->field($model, 'email',['inputOptions'=>['id'=> 'user_id', 'class' => ''], 'labelOptions'=>['class'=>'']])->textInput(['autofocus' => true]) ?>
 
       <?= $form->field($model, 'password', ['inputOptions' =>['id'=>'user_password', 'type'=>'password', 'class'=>''],'labelOptions'=>['class'=>'']])->passwordInput() ?>
 
