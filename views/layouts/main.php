@@ -27,14 +27,39 @@ AppAsset::register($this);
 <header>
     <div id ="navbar"></div>
     <div id ="subnavbar">
-       <a id="logo" href="/">
-          <?= Html::img('img/logo.png') ;?>
+       <a href="/">
+          <?= Html::img('img/logo.png', ['class'=>'logo'] ) ;?>
        </a>
       <?php if(Yii::$app->user->getIsGuest()): ?>
         <?= $this->render('login_form', ['model' => $this->params['login_form']]);?>
       <?php else: ?>
-      <?=  Yii::$app->user->identity->name ?>
-          <a href="/index.php?r=login/logout">Logout</a>
+          <div class="wrapper">
+              <div class="navbar">
+                  <div class="right">
+                      <ul class="xxx" style=" list-style: none;">
+                          <li style="background: none;">
+                              <a href="#">
+                                  <p><?=  Yii::$app->user->identity->name ?><br> <span>Admin</span></p><?= Html::img('img/Profile1.png', ['class'=>'profile'] ) ;?>
+                              </a>
+
+                              <div class="dropdown">
+                                  <ul style=" list-style: none;">
+                                      <li><a href="/index.php?r=users/profile"><i class="glyphicon glyphicon-user" style="margin-right: 10px;"></i> Perfil</a></li>
+                                      <li><a href="/index.php?r=users/settings"><i class="glyphicon glyphicon-cog" style="margin-right: 10px;"></i>Definições</a></li>
+                                      <li><a href="/index.php?r=login/logout"><i class="glyphicon glyphicon-log-out" style="margin-right: 10px;"></i> Signout</a></li>
+                                  </ul>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+          <script>
+              document.querySelector(".right ul li").addEventListener("click", function(){
+                  this.classList.toggle("active");
+              });
+          </script>
       <?php endif ?>
     </div>
 

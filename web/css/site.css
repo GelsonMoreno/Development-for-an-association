@@ -10,11 +10,15 @@ html, body {
 /*------------------CABEÇLHO--------------------*/
 #navbar{
     width: 100%;
-    height: 26px;
+    height: 16px;
     left: 0px;
     top: 0px;
     background: #DE0F0F;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+
+.navbar{
+    margin-bottom: -22px;
 }
 
 #subnavbar{
@@ -27,13 +31,10 @@ html, body {
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
 
-
-#logo{
-    width: 119px;
-    height: 75px;
-    left: 14px;
-    top: 13px;
+.logo{
+    height: 60px;
 }
+
 img {
     vertical-align: middle;
     height: 80px;
@@ -94,7 +95,7 @@ img {
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
-    background-color: FFFFFF;
+    background-color: #FFFFFF;
 
 }
 
@@ -304,10 +305,12 @@ label {
     font-weight: bold;
     font-size: 18px;
     text-align: center;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     border-radius: 8px;
     border: none;
     margin-right: 30px;
+    text-decoration: none !important;
+    line-height: 33px;
 }
 
 /*Documents content*/
@@ -364,20 +367,6 @@ th, td {
 }
 
 
-
-/*.bi-file-earmark-text-fill{
-    color: black;
-}
-
-.bi-trash-fill{
-    color: black;
-}
-.bi-pen-fill{
-    color: black;
-}
-.bi-eye-fill{
-    color: black;
-}
 /*----UtilizadoresPage----*/
 .content_header_users{
 
@@ -448,14 +437,7 @@ th, td {
     padding-right: 10px;
 }
 
-/*--------footer------*/
-
-#footer{
-    background: #DE0F0F;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-
-}
-/*-----------definiçao---------*/
+/*-----------definiçao-alt.dados---------*/
 .content_settings {
     width: 100%;
     height: 70px;
@@ -469,9 +451,7 @@ th, td {
     font-family: Roboto;
     font-size: 48px;
 }
-
 .settings {
-
     width: 100%;
     height: 35px;
     background: #E5E5E5;
@@ -482,16 +462,16 @@ th, td {
     padding: 6px 8px;
     font-size: 18px ;
     color: #000000;
-
 }
+
 .settings_ul{
     list-style: none;
 }
+
 .settings_head{
-
     margin-top: 10px;
-
 }
+
 .settings_privacity{
     width: 100%;
     height: 415px;
@@ -518,7 +498,6 @@ th, td {
 }
 .form-password{
     margin-top: 20px;
-
 }
 
 .form-password .label_indx{
@@ -546,8 +525,6 @@ th, td {
     border-radius: 100px;
     background:#8D8D8D ;
     margin-left: 15px;
-
-
 }
 
 .confirm{
@@ -559,4 +536,66 @@ th, td {
     margin-left: -65px;
 }
 
+/*--------teste-------------------------------------------------*/
 
+.wrapper .navbar .right ul li a{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    text-decoration: none;
+}
+
+.wrapper .navbar .right img{
+    margin: 0 45px;
+}
+
+.wrapper .navbar .right a{
+    text-align: right;
+    background: none;
+}
+.wrapper .navbar .right p{
+    margin: 0 0 -8px;
+}
+
+.wrapper .navbar .right a span{
+    font-size: 10px;
+}
+
+.wrapper .navbar .right ul li .dropdown{
+    position: absolute;
+    top: 65px;
+    right: 14px;
+    background: linear-gradient(180deg, #FFFFFF 0%,
+    rgba(255, 255, 255, 0) 100%), #E5E5E5;
+    padding: 10px 25px;
+    border-radius: 5px;
+    display: none;
+    width: 190px;
+}
+
+.wrapper .navbar .right ul li .dropdown:before{
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 73%;
+    transform: translateX(-50%);
+    border: 10px solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+.wrapper .navbar .right ul li.active .dropdown{
+    display: block;
+    z-index: 999;
+}
+
+.profile{
+    width: 40px;
+    height: 40px;
+}
+/*--------footer------*/
+
+#footer{
+    background: #DE0F0F;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+
+}
