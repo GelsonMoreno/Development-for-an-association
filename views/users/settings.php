@@ -1,21 +1,33 @@
 <?php
 
+use yii\helpers\Html;
 
 ?>
 <div class='row'>
   <div class="col-sm">
     <?= $this->render('../shared/left_column', ['active' => 'settings']); ?>
+  </div>
+    <div class="col-lg">
+       <div class="content_settings"  > <?= Html::img('img/settings.png') ;?> Definições </div>
+         <div class="settings_head">
+            <ul class="settings_ul">
+                <li><a  href="/index.php?r=users/change_data"><button class="settings">Alterar Dados</button> </a></li>
 
-    <section class="content">
-      <div class="dados">
-        <h3>alterar dados</h3>
-        <form class="modelo" method="POST">
-          <input class="field1" name="Password">
-          <input class="field2" name="Nova Password">
-          <input class="field3" name="Confirmar Password">
-          <input class="field4" name="Editar endereço">
-          <input type="submit" value="Guardar">
-        </form>
+                <div class="settings">Politica de Privacidade</div>
 
-      </div>
-    </section>
+            </ul>
+         </div>
+        <div class="settings_privacity">
+            A sua privacidade é importante para nós. É política do site respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site , e outros sites que possuímos e operamos.<p>
+
+            Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.<p>
+
+            Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.
+
+            Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.<p>
+
+            O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.
+        </div>
+    </div>
+</div>
+

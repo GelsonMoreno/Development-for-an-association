@@ -29,4 +29,21 @@ class UsersController extends Controller
     $users = $this->get_records();
     return $this->render('settings', ['users' => $users]);
   }
+
+  public function actionChange_data(){
+    if (\Yii::$app->user->isGuest){
+        return $this->goHome();
+    }
+    $users = $this->get_records();
+    return $this->render('modify_data', ['users' => $users]);
+  }
+
+    public function actionProfile(){
+        if (\Yii::$app->user->isGuest){
+            return $this->goHome();
+        }
+        $users = $this->get_records();
+        return $this->render('profile', ['users' => $users]);
+    }
+
 }
