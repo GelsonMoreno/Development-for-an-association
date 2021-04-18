@@ -22,9 +22,10 @@ use yii\helpers\Html; ?>
           <td><?= $contact_us_data->email ?></td>
           <td><?= $contact_us_data->number ?></td>
           <td class="td_button">
-            <a href=""><i class="bi bi-eye-fill"></i></a>
-            <a href=""><i class="bi bi-trash-fill"></i>
-            </a>
+            <a href="/index.php?r=contact_us/show&contact_us_id=<?= $contact_us_data->id ?>"><i class="bi bi-eye-fill"></i></a>
+              <a href="/index.php?r=contact_us/delete&contact_us_id=<?= $contact_us_data->id ?>" data-confirm="Are you sure?">
+                  <i class="bi bi-trash-fill"></i>
+              </a>
           </td>
         </tr>
       <?php endforeach;?>

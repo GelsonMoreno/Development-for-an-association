@@ -20,7 +20,7 @@ class Contact_us  extends ActiveRecord
 
       return [
         'name' => 'Nome',
-        'email' =>'E-mail',
+        'email' =>'Email',
         'number' =>'Número',
         'description'=>'Descrição'
       ];

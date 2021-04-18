@@ -4,7 +4,7 @@
 
 <?= $form->field($model, 'title', ['inputOptions'=> ['class'=>'label_indx']])->textInput(['autofocus' => true]) ?>
 
-<?= $form->field($model, 'type', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
+<?= $form->field($model, 'type', ['inputOptions'=> ['class'=>'label_indx1', 'disabled' => true]]) ?>
 
 <?= $form->field($model, 'date', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
 

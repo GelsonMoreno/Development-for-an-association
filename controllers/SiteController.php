@@ -31,6 +31,7 @@ class SiteController extends Controller
 
         if($contact_us->load(Yii::$app->request->post()) && $contact_us->validate()){
           $submitted = true;
+          $contact_us->date=date('Y-m-d H:i:s');
           $contact_us->save();
           $contact_us = new Contact_us;
         }
