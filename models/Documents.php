@@ -13,6 +13,7 @@ class Documents extends ActiveRecord
   {
     return [
       [['title', 'description', 'type', 'date'], 'string'],
+      [['title', 'description', 'date'], 'required'],
       [['file'], 'file']
     ];
   }

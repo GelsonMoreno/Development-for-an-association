@@ -11,7 +11,7 @@ class News extends ActiveRecord
   public function rules()
   {
     return [
-      [['title', 'text', 'date'], 'string'],
+      [['title', 'text', 'date'], 'required'],
     ];
   }
 
