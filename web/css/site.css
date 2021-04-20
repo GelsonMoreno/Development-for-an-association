@@ -7,6 +7,9 @@ html, body {
     width: 100%;
 }
 
+#user_id,#user_password{
+    margin-left: 3px;
+}
 /*------------------CABEÇLHO--------------------*/
 #navbar{
     width: 100%;
@@ -144,6 +147,13 @@ img {
 .form-group .description{
     width: 715px;
     height: 180px;
+    background: #C4C4C4;
+    border-radius: 3px;
+    border: 0.5px solid #C4C4C4;
+}
+.form-group .text{
+    width: 715px;
+    height: 320px;
     background: #C4C4C4;
     border-radius: 3px;
     border: 0.5px solid #C4C4C4;
