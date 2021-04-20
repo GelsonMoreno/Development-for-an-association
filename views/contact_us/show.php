@@ -22,7 +22,7 @@ use \yii\helpers\Html;
       <div class="description"><?= $model->description ?></div>
 
       <div class="button_cancelar_alterar">
-        <?= Html::a('Voltar', ['/documents/index'], ['class'=>'btn btn-primary']) ?>
+        <?= Html::a('Voltar', ['/contact_us/index'], ['class'=>'btn btn-primary']) ?>
       </div>
     </div>
 
