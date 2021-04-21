@@ -15,6 +15,7 @@
 
 <script>
   const input_field = document.querySelector('#text_input_field');
+  const input_type_field = document.querySelector('#documents-type');
 
   input_field.onchange = function(){
       if(!this.value) return;
@@ -25,6 +26,13 @@
           return;
       }
 
-      document.querySelector('#documents-type').value = file_type;
-  }
+      input_type_field.value = file_type;
+  };
+
+  document.querySelectorAll('#document_new, document_edit').forEach(function(form){
+    form.onsubmit = function() {
+        console.log({form});
+        input_type_field.disabled = false;
+    };
+  });
 </script>

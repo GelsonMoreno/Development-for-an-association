@@ -89,10 +89,17 @@ class DocumentsController extends Controller
 
   }
 
-
-
   private function get_records() {
     //$documents = Documents::find()->where(['Users_id' => \Yii::$app->user->identity->getId()])->orderBy('date desc')->all();
-    return Documents::find()->orderBy('date desc')->all();
+
+    $documents = Documents::find();
+    $params = Yii::$app->request->queryParams;
+
+    if(isSet($params['search_field'])){
+      $documents = $documents->where(['like', 'title', $params['search_field'].'%', false]);
+    }
+
+    //$documents = $documents->orderBy('date desc')->all();;
+    return $documents->orderBy('date desc')->all();
   }
 }

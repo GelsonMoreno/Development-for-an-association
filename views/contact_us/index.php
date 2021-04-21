@@ -6,7 +6,7 @@ use yii\helpers\Html; ?>
     <?= $this->render('../shared/left_column', ['active' => 'contact_us']);?>
   </div>
   <div class="col-lg">
-    <?= $this->render('../shared/content_header');?>
+    <?= $this->render('../shared/content_header', ['showNewButton'=> false]);?>
     <table id="t01">
       <tr>
         <th>Nome</th>

@@ -17,7 +17,7 @@ use \yii\helpers\Html;
       <?= $this->render('form', ['model' => $model, 'form' => $form]);?>
 
       <div class="button_cancelar_alterar"><?= Html::submitButton('Guardar', ['class'=>'btn btn-primary']) ?>
-        <?= Html::a('Cancel', ['/documents/index'], ['class'=>'btn btn-primary']) ?>
+        <?= Html::a('Cancel', ['/news/index'], ['class'=>'btn btn-primary']) ?>
       </div>
       <?php ActiveForm::end(); ?>
     </div>
