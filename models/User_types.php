@@ -21,5 +21,12 @@ class User_types extends ActiveRecord
         return self::findOne(['designation'=> 'associated']);
    }
 
+   public static function document_select_public(){
+     $array = [];
 
+     foreach (self::find()->where(['<>', 'designation', 'admin'])->all() as $user_type){
+       $array[$user_type->id] = $user_type->designation;
+     }
+     return $array;
+   }
 }

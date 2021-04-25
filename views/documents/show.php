@@ -14,8 +14,10 @@ use \yii\helpers\Html;
             <div class="label_indx"><?= $model->title ?></div>
             <label>Tipo</label><br>
             <div class="label_indx1"><?= $model->type ?></div>
-            <label>Data</label><br>
+            <label>Data de criação</label><br>
             <div class="label_indx1"><?= $model->date ?></div>
+            <label>Data de modificação</label><br>
+            <div class="label_indx1"><?= $model->update_at ?></div>
             <label>Descrição</label><br>
             <div class="description"><?= $model->description ?></div>
             <label>File</label><br>

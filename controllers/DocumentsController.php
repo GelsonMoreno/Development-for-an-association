@@ -5,6 +5,7 @@ namespace app\controllers;
 
 
 use app\models\Documents;
+use app\models\User;
 use yii\web\Controller;
 use Yii;
 use yii\web\UploadedFile;
@@ -26,6 +27,14 @@ class DocumentsController extends Controller
     if($documents->load(Yii::$app->request->post()) && $documents->validate()){
       $documents->setUserID();
       $documents->file = UploadedFile::getInstance($documents, 'file');
+      $documents->date=date('Y-m-d H:i:s');
+
+      if(Yii::$app->request->post()['Documents']['public'] == '') {
+        $documents->public = '';
+      } else {
+        $documents->public = implode(',',Yii::$app->request->post()['Documents']['public']);
+      }
+
       $documents->save();
       $documents->file->saveAs(Yii::$app->basePath . '/upload/' . 'document_' . $documents->id . '_' . $documents->file->baseName . '.' . $documents->file->extension);
       return $this->redirect(['documents/index']);
@@ -43,6 +52,13 @@ class DocumentsController extends Controller
       if($documents->file == '' or $documents->file == Null){
         $documents->setPreviousFile();
       }
+      $documents->update_at=date('Y-m-d H:i:s');
+      if(Yii::$app->request->post()['Documents']['public'] == '') {
+        $documents->public = '';
+      } else {
+        $documents->public = implode(',',Yii::$app->request->post()['Documents']['public']);
+      }
+
       $documents->update();
       return $this->redirect(['documents/index']);
     }
@@ -97,6 +113,10 @@ class DocumentsController extends Controller
 
     if(isSet($params['search_field'])){
       $documents = $documents->where(['like', 'title', $params['search_field'].'%', false]);
+    }
+
+    if(!Yii::$app->user->identity->isAdmin()){
+      $documents = $documents->where(['like', 'public', '%'. Yii::$app->user->identity->User_types_id .'%', false]);
     }
 
     //$documents = $documents->orderBy('date desc')->all();;
