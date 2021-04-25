@@ -11,8 +11,10 @@ use \yii\helpers\Html;
       <div class="form-group">
       <label>Título</label><br>
       <div class="label_indx"><?= $model->title ?></div>
-      <label>Data</label><br>
-      <div class="label_indx1"><?= $model->date ?></div>
+      <label>Data de criação</label><br>
+      <div class="label_indx1"><?= $model->create_at ?></div>
+      <label>Data de modificação</label><br>
+      <div class="label_indx1"><?= $model->update_at ?></div>
       <label>Texto</label><br>
       <div class="text"><?= $model->text ?></div>
       <div class="button_cancelar_alterar">

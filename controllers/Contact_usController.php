@@ -20,8 +20,14 @@ class Contact_usController extends Controller
 
   }
   private function get_records() {
-    //$payments = Documents::find()->where(['Users_id' => \Yii::$app->user->identity->getId()])->orderBy('date desc')->all();
-    return Contact_us::find()->orderBy('date desc')->all();
+    $contac_us = Contact_us::find();
+    $params = Yii::$app->request->queryParams;
+
+    if(isSet($params['search_field'])){
+      $contac_us = $contac_us->where(['like', 'name', '%'. $params['search_field'].'%', false]);
+    }
+
+    return $contac_us->orderBy('date desc')->all();
   }
 
   public function actionShow(){

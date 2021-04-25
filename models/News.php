@@ -11,7 +11,7 @@ class News extends ActiveRecord
   public function rules()
   {
     return [
-      [['title', 'text', 'date'], 'required'],
+      [['title', 'text'], 'required'],
     ];
   }
 
@@ -19,7 +19,6 @@ class News extends ActiveRecord
 
     return [
       'title' => 'Título',
-      'date' =>'Data',
       'text'=>'Texto',
 
     ];

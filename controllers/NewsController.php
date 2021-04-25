@@ -19,8 +19,13 @@ class NewsController extends Controller
   }
 
   private function get_records() {
-    //$payments = Documents::find()->where(['Users_id' => \Yii::$app->user->identity->getId()])->orderBy('date desc')->all();
-    return News::find()->orderBy('date desc')->all();
+    $news = News::find();
+    $params = Yii::$app->request->queryParams;
+
+    if(isSet($params['search_field'])){
+      $news = $news->where(['like', 'title', '%'. $params['search_field'].'%', false]);
+    }
+    return $news->orderBy('create_at desc')->all();
   }
 
   public function actionShow(){
@@ -45,7 +50,9 @@ class NewsController extends Controller
     $news_id = (int)$params['news_id'];
     $news = News::findOne(['id' => $news_id]);
 
+
     if($news->load(Yii::$app->request->post()) && $news->validate()){
+      $news->update_at=date('Y-m-d H:i:s');
       $news->update();
       return $this->redirect(['news/index']);
     }
@@ -58,6 +65,7 @@ class NewsController extends Controller
 
     if($news->load(Yii::$app->request->post()) && $news->validate()){
       $news->setUserID();
+      $news->create_at=date('Y-m-d H:i:s');
       $news->save();
       return $this->redirect(['news/index']);
     }
