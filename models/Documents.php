@@ -12,7 +12,7 @@ class Documents extends ActiveRecord
   public function rules()
   {
     return [
-      [['title', 'description', 'type', 'date'], 'string'],
+      [['title', 'description', 'type'], 'string'],
       [['title', 'description'], 'required'],
       [['file'], 'file']
     ];
@@ -23,9 +23,11 @@ class Documents extends ActiveRecord
     return [
       'title' => 'Título',
       'type' =>'Tipo',
-      'date' =>'Data',
+      'create_at' =>'Data de criação',
+      'update_at' =>'Data de criação',
       'description'=>'Descrição',
-      'file' => 'Ficheiro'
+      'file' => 'Ficheiro',
+      'public' =>'Permissão'
     ];
   }
 

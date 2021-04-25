@@ -15,7 +15,7 @@ use \yii\helpers\Html;
             <label>Tipo</label><br>
             <div class="label_indx1"><?= $model->type ?></div>
             <label>Data de criação</label><br>
-            <div class="label_indx1"><?= $model->date ?></div>
+            <div class="label_indx1"><?= $model->create_at ?></div>
             <label>Data de modificação</label><br>
             <div class="label_indx1"><?= $model->update_at ?></div>
             <label>Descrição</label><br>

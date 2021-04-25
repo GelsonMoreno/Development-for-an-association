@@ -11,7 +11,7 @@ use yii\helpers\Html; ?>
             <tr>
                 <th>Título</th>
                 <th>Descrição</th>
-                <th>Data</th>
+                <th>Data de criação</th>
                 <th>Tipo</th>
                 <th></th>
             </tr>
@@ -19,7 +19,7 @@ use yii\helpers\Html; ?>
               <tr>
                   <td><?= $document_data->title ?></td>
                   <td> <?= yii\helpers\BaseStringHelper::truncate($document_data->description, 40) ?></td>
-                  <td><?= $document_data->date ?></td>
+                  <td><?= $document_data->create_at ?></td>
                   <td><?= $document_data->type ?></td>
                   <td class="td_button">
                       <a href="/index.php?r=documents/show&document_id=<?= $document_data->id ?>"><i class="bi bi-eye-fill"></i></a>
