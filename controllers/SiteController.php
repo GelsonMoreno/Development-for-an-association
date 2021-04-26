@@ -25,7 +25,7 @@ class SiteController extends Controller
         return $this->redirect(['documents/index']);
       }
         $this->view->params['login_form'] = new LoginForm();
-        $news = News::find()->orderBY('date desc')->all();
+        $news = News::find()->orderBY('create_at desc')->all();
         $contact_us = new Contact_us();
         $submitted = false;
 
