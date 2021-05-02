@@ -9,6 +9,7 @@ use app\models\Projects;
 use yii\web\Controller;
 use Yii;
 use yii\web\UploadedFile;
+use app\models\Companies;
 
 
 class PaymentsController extends Controller
@@ -19,13 +20,13 @@ class PaymentsController extends Controller
     }
     $payments = $this->get_records();
 
-    $total_money = Companies::findOne(['name' => 'TRANSTEC'])->balance;
+   $total_money = Companies::findOne(['name' => 'TRANSTEC'])->balance;
 
       return $this->render('index',['payments' => $payments, 'total_money' => $total_money]);
   }
 
   private function get_records() {
-    //$payments = Documents::find()->where(['Users_id' => \Yii::$app->user->identity->getId()])->orderBy('date desc')->all();
+
     return Payments::find()->orderBy('create_at desc')->all();
   }
 
@@ -44,6 +45,8 @@ class PaymentsController extends Controller
             }
 
             $payments->save();
+            $company = Companies::findOne(['name' => 'TRANSTEC']);
+            $company->updateBalance(-$payments->value);
             $payments->file->saveAs(Yii::$app->basePath . '/upload/' . 'payment_' . $payments->id . '_' . $payments->file->baseName . '.' . $payments->file->extension);
             return $this->redirect(['payments/index']);
         }
@@ -81,6 +84,8 @@ class PaymentsController extends Controller
         $payment_id = (int)$params['payment_id'];
         $payment = Payments::findOne(['id'=> $payment_id]);
         if($payment->delete()){
+          $company = Companies::findOne(['name' => 'TRANSTEC']);
+          $company->updateBalance($payment->value);
             $path = Yii::$app->basePath . '/upload/' . 'payment_' . $payment->id . '_' . $payment->file;
             if (file_exists($path)) {
                 unlink($path);
@@ -95,18 +100,21 @@ class PaymentsController extends Controller
         $payment_id = (int)$params['payment_id'];
         $payments = Payments::findOne(['id' => $payment_id]);
         $projects = Projects::find()->all();
+      $current_value = $payments->value;
 
         if($payments->load(Yii::$app->request->post()) && $payments->validate()){
             if($payments->file == '' or $payments->file == Null){
                 $payments->setPreviousFile();
             }
-            $payments->update_at=date('Y-m-d H:i:s');
+
             if(Yii::$app->request->post()['Payments']['public'] == '') {
                 $payments->public = '';
             } else {
                 $payments->public = implode(',',Yii::$app->request->post()['Payments']['public']);
             }
-
+            $payments->update_at=date('Y-m-d H:i:s');
+            $company = Companies::findOne(['name' => 'TRANSTEC']);
+            $company->updateBalance(-$payments->value + $current_value);
             $payments->update();
             return $this->redirect(['payments/index']);
         }

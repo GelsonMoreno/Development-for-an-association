@@ -17,7 +17,10 @@ class ReceiptsController extends Controller
       return $this->goHome();
     }
     $receipts = $this->get_records();
-    return $this->render('index', ['receipts' => $receipts]);
+
+    $total_money = Companies::findOne(['name' => 'TRANSTEC'])->balance;
+
+    return $this->render('index', ['receipts' => $receipts, 'total_money' => $total_money]);
 
   }
 
@@ -37,6 +40,9 @@ class ReceiptsController extends Controller
       }
 
       $receipts->save();
+      $company = Companies::findOne(['id' => $receipts->Companies_id]);
+      $company->updateBalance($receipts->value);
+
       $receipts->file->saveAs(Yii::$app->basePath . '/upload/' . 'receipt_' . $receipts->id . '_' . $receipts->file->baseName . '.' . $receipts->file->extension);
       return $this->redirect(['receipts/index']);
     }
@@ -71,6 +77,8 @@ class ReceiptsController extends Controller
     $receipt_id = (int)$params['receipts_id'];
     $receipts = Receipts::findOne(['id'=> $receipt_id]);
     if($receipts->delete()){
+      $company = Companies::findOne(['id' => $receipts->Companies_id]);
+      $company->updateBalance(-$receipts->value);
       $path = Yii::$app->basePath . '/upload/' . 'receipt_' . $receipts->id . '_' . $receipts->file;
       if (file_exists($path)) {
         unlink($path);
@@ -84,6 +92,7 @@ class ReceiptsController extends Controller
     $receipts = Receipts::findOne(['id' => $receipt_id]);
     $projects = Projects::find()->all();
     $companies = Companies::find()->all();
+    $current_value = $receipts->value;
 
     if($receipts->load(Yii::$app->request->post()) && $receipts->validate()){
       if($receipts->file == '' or $receipts->file == Null){
@@ -98,7 +107,10 @@ class ReceiptsController extends Controller
       }
 
       $receipts->update_at=date('Y-m-d H:i:s');
+      $company = Companies::findOne(['name' => 'TRANSTEC']);
+      $company->updateBalance($receipts->value - $current_value);
       $receipts->update();
+
       return $this->redirect(['receipts/index']);
     }
 

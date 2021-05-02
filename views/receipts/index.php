@@ -6,7 +6,7 @@
     </div>
     <div class="col-lg">
       <?= $this->render('../shared/content_header', ['new_url'=>'index.php?r=receipts/new']);?>
-      <?= $this->render('../shared/content_balance');?>
+      <?= $this->render('../shared/content_balance', ['total_money' => $total_money]);?>
 
         <table id="t01">
             <tr>

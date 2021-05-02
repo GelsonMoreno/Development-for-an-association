@@ -28,9 +28,10 @@ class Receipts extends ActiveRecord
       'update_at' =>'Data de modificação',
       'description'=>'Descrição',
       'file' => 'Ficheiro',
-      'address' => 'Local',
+      'address' => 'Endereço',
       'Projects_id' => 'Projetos',
-      'Companies_id' => 'Empresas'
+      'Companies_id' => 'Empresas',
+      'value' => 'Valor'
     ];
   }
   public function setUserID(){
