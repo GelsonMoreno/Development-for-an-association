@@ -648,3 +648,8 @@ th, td {
     background: #8D8D8D;
     border-radius: 10px;
 }
+
+/* selected_color */
+.button_active {
+    background-color: #a2a2a2 !important;
+}
