@@ -2,7 +2,6 @@
 
 
 namespace app\controllers;
-
 use app\models\Companies;
 use app\models\Projects;
 use Yii;
@@ -17,11 +16,9 @@ class ReceiptsController extends Controller
       return $this->goHome();
     }
     $receipts = $this->get_records();
-
     $total_money = Companies::findOne(['name' => 'TRANSTEC'])->balance;
 
     return $this->render('index', ['receipts' => $receipts, 'total_money' => $total_money]);
-
   }
 
   public function actionNew(){
@@ -42,7 +39,6 @@ class ReceiptsController extends Controller
       $receipts->save();
       $company = Companies::findOne(['id' => $receipts->Companies_id]);
       $company->updateBalance($receipts->value);
-
       $receipts->file->saveAs(Yii::$app->basePath . '/upload/' . 'receipt_' . $receipts->id . '_' . $receipts->file->baseName . '.' . $receipts->file->extension);
       return $this->redirect(['receipts/index']);
     }
@@ -54,21 +50,6 @@ class ReceiptsController extends Controller
     $receipts_id = (int)$params['receipts_id'];
     $receipts = Receipts::findOne(['id'=> $receipts_id]);
     return $this->render('show', ['model'=>$receipts]);
-
-  }
-  public function actionDownload(){
-    $params = Yii::$app->request->queryParams;
-    $receipts_name = $params['receipts_name'];
-    $path = Yii::$app->basePath . '/upload/' . $receipts_name;
-
-    if (file_exists($path)) {
-      $inline = false;
-      if(isSet($params['inline'])){
-        $inline = true;
-      }
-
-      return Yii::$app->response->sendFile($path, $receipts_name, ['inline'=>$inline]);
-    }
 
   }
 
@@ -86,6 +67,7 @@ class ReceiptsController extends Controller
     }
     return $this->redirect(['receipts/index']);
   }
+
   public function actionUpdate(){
     $params = Yii::$app->request->queryParams;
     $receipt_id = (int)$params['receipts_id'];
@@ -117,6 +99,22 @@ class ReceiptsController extends Controller
     return $this->render('edit', ['model'=>$receipts, 'projects' => $projects, 'companies' => $companies]);
   }
 
+  public function actionDownload(){
+    $params = Yii::$app->request->queryParams;
+    $receipts_name = $params['receipts_name'];
+    $path = Yii::$app->basePath . '/upload/' . $receipts_name;
+
+    if (file_exists($path)) {
+      $inline = false;
+      if(isSet($params['inline'])){
+        $inline = true;
+      }
+
+      return Yii::$app->response->sendFile($path, $receipts_name, ['inline'=>$inline]);
+    }
+
+  }
+
   private function get_records() {
     $receipts = Receipts::find();
     $params = Yii::$app->request->queryParams;
@@ -131,6 +129,5 @@ class ReceiptsController extends Controller
 
     return $receipts->orderBy('create_at desc')->all();
   }
-
 
 }

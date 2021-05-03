@@ -2,7 +2,6 @@
 
 
 namespace app\controllers;
-
 use Yii;
 use app\models\News;
 use yii\web\Controller;
@@ -18,14 +17,16 @@ class NewsController extends Controller
 
   }
 
-  private function get_records() {
-    $news = News::find();
-    $params = Yii::$app->request->queryParams;
+  public function actionNew(){
+    $news= new News();
 
-    if(isSet($params['search_field'])){
-      $news = $news->where(['like', 'title', '%'. $params['search_field'].'%', false]);
+    if($news->load(Yii::$app->request->post()) && $news->validate()){
+      $news->setUserID();
+      $news->create_at=date('Y-m-d H:i:s');
+      $news->save();
+      return $this->redirect(['news/index']);
     }
-    return $news->orderBy('create_at desc')->all();
+    return $this->render('new', ['model'=>$news]);
   }
 
   public function actionShow(){
@@ -50,7 +51,6 @@ class NewsController extends Controller
     $news_id = (int)$params['news_id'];
     $news = News::findOne(['id' => $news_id]);
 
-
     if($news->load(Yii::$app->request->post()) && $news->validate()){
       $news->update_at=date('Y-m-d H:i:s');
       $news->update();
@@ -60,16 +60,14 @@ class NewsController extends Controller
     return $this->render('edit', ['model'=>$news]);
   }
 
-  public function actionNew(){
-    $news= new News();
 
-    if($news->load(Yii::$app->request->post()) && $news->validate()){
-      $news->setUserID();
-      $news->create_at=date('Y-m-d H:i:s');
-      $news->save();
-      return $this->redirect(['news/index']);
+  private function get_records() {
+    $news = News::find();
+    $params = Yii::$app->request->queryParams;
+
+    if(isSet($params['search_field'])){
+      $news = $news->where(['like', 'title', '%'. $params['search_field'].'%', false]);
     }
-
-    return $this->render('new', ['model'=>$news]);
+    return $news->orderBy('create_at desc')->all();
   }
 }

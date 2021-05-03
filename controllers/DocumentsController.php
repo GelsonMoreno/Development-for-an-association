@@ -2,8 +2,6 @@
 
 
 namespace app\controllers;
-
-
 use app\models\Documents;
 use app\models\User;
 use yii\web\Controller;
@@ -43,6 +41,29 @@ class DocumentsController extends Controller
     return $this->render('new', ['model'=>$documents]);
   }
 
+  public function actionShow(){
+    $params = Yii::$app->request->queryParams;
+    $document_id = (int)$params['document_id'];
+    $document = Documents::findOne(['id'=> $document_id]);
+
+    return $this->render('show', ['model'=>$document]);
+
+  }
+
+  public function actionDelete(){
+    $params = Yii::$app->request->queryParams;
+    $document_id = (int)$params['document_id'];
+    $document = Documents::findOne(['id'=> $document_id]);
+    if($document->delete()){
+      $path = Yii::$app->basePath . '/upload/' . 'document_' . $document->id . '_' . $document->file;
+      if (file_exists($path)) {
+        unlink($path);
+      }
+    }
+
+    return $this->redirect(['documents/index']);
+  }
+
   public function actionUpdate(){
     $params = Yii::$app->request->queryParams;
     $document_id = (int)$params['document_id'];
@@ -64,29 +85,6 @@ class DocumentsController extends Controller
     }
 
     return $this->render('edit', ['model'=>$documents]);
-  }
-
-  public function actionDelete(){
-    $params = Yii::$app->request->queryParams;
-    $document_id = (int)$params['document_id'];
-    $document = Documents::findOne(['id'=> $document_id]);
-    if($document->delete()){
-      $path = Yii::$app->basePath . '/upload/' . 'document_' . $document->id . '_' . $document->file;
-      if (file_exists($path)) {
-        unlink($path);
-      }
-    }
-
-    return $this->redirect(['documents/index']);
-  }
-
-  public function actionShow(){
-    $params = Yii::$app->request->queryParams;
-    $document_id = (int)$params['document_id'];
-    $document = Documents::findOne(['id'=> $document_id]);
-
-    return $this->render('show', ['model'=>$document]);
-
   }
 
   public function actionDownload(){

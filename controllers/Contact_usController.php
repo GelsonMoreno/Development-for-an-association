@@ -2,7 +2,6 @@
 
 
 namespace app\controllers;
-
 use Yii;
 use app\models\Contact_us;
 use yii\web\Controller;
@@ -18,16 +17,6 @@ class Contact_usController extends Controller
     $contac_us = $this->get_records();
     return $this->render('index',['contact_us' => $contac_us]);
 
-  }
-  private function get_records() {
-    $contac_us = Contact_us::find();
-    $params = Yii::$app->request->queryParams;
-
-    if(isSet($params['search_field'])){
-      $contac_us = $contac_us->where(['like', 'name', '%'. $params['search_field'].'%', false]);
-    }
-
-    return $contac_us->orderBy('date desc')->all();
   }
 
   public function actionShow(){
@@ -46,5 +35,16 @@ class Contact_usController extends Controller
     $contact_us->delete();
 
     return $this->redirect(['contact_us/index']);
+  }
+
+  private function get_records() {
+    $contac_us = Contact_us::find();
+    $params = Yii::$app->request->queryParams;
+
+    if(isSet($params['search_field'])){
+      $contac_us = $contac_us->where(['like', 'name', '%'. $params['search_field'].'%', false]);
+    }
+
+    return $contac_us->orderBy('date desc')->all();
   }
 }
