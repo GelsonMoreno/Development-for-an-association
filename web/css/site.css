@@ -111,12 +111,12 @@ img {
 }
 
 .blue-column {
-    border-right: 0.5px solid #C4C4C4;
+
 
 }
 
 .green-column {
-
+    border-left: 0.5px solid #C4C4C4;
 }
 
 .wall_title_blue{
@@ -223,6 +223,10 @@ label {
     vertical-align: middle;
     height: 70px;
     margin-left: 25px;
+}
+.news_scroll{
+    max-height: 60vh;
+    overflow: auto;
 }
 .main-content_news{
     list-style: none;

@@ -31,14 +31,17 @@ use \yii\helpers\Html;
         <div class='green-column'>
            <div class="wall_title_green">Notícias</div>
           <?= Html::img('img/logo.png', $options = ['class'=>'imgIndexNews']); ?>
-           <ul class="main-content_news">
-            <?php foreach ($news as $news_data): ?>
-                <li>
-                    <h3 class="title_news"><?= Html::img('img/seta.png', $options = ['class'=>'imgIndexSeta']); ?><?= $news_data->title ?></h3>
-                    <p class="description_news"><?= $news_data->text ?></p>
-                </li>
-            <?php endforeach;?>
-           </ul>
+            <div class="news_scroll">
+                <ul class="main-content_news">
+                <?php foreach ($news as $news_data): ?>
+                    <li>
+                        <h3 class="title_news"><?= Html::img('img/seta.png', $options = ['class'=>'imgIndexSeta']); ?><?= $news_data->title ?></h3>
+                        <p class="description_news"><?= $news_data->text ?></p>
+                    </li>
+                <?php endforeach;?>
+                </ul>
+            </div>
+
         </div>
     </div>
 </div>
