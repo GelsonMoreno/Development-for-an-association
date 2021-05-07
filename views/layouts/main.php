@@ -40,12 +40,12 @@ AppAsset::register($this);
                       <ul class="xxx" style=" list-style: none;">
                           <li style="background: none;">
                               <a href="#">
-                                  <p><?=  Yii::$app->user->identity->name ?><br> <span>Admin</span></p><?= Html::img('img/Profile1.png', ['class'=>'profile'] ) ;?>
+                                  <p><?=  Yii::$app->user->identity->name ?><br> <span><?= Yii::$app->user->identity->getUserType()->designation ?></span></p><?= Html::img('img/Profile1.png', ['class'=>'profile'] ) ;?>
                               </a>
 
                               <div class="dropdown">
                                   <ul style=" list-style: none;">
-                                      <li><a href="/index.php?r=users/profile"><i class="glyphicon glyphicon-user" style="margin-right: 10px;"></i> Perfil</a></li>
+                                      <li><a href="/index.php?r=users/show&users_id=<?= Yii::$app->user->identity->id ?>"><i class="glyphicon glyphicon-user" style="margin-right: 10px;"></i> Perfil</a></li>
                                       <li><a href="/index.php?r=users/settings"><i class="glyphicon glyphicon-cog" style="margin-right: 10px;"></i>Definições</a></li>
                                       <li><a href="/index.php?r=login/logout"><i class="glyphicon glyphicon-log-out" style="margin-right: 10px;"></i> Signout</a></li>
                                   </ul>

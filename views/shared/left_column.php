@@ -13,8 +13,6 @@
             <li><a href="/index.php?r=contact_us/index"><button class="left_column_button <?= $active == 'contact_us' ? 'active': '' ?>">Contate-Nos</button></a></li>
 
         <?php elseif (Yii::$app->user->identity->isAssociated()):?>
-            <li><a href="/index.php?r=users/profile"><button class="left_column_button <?= $active == 'profile' ? 'active': '' ?>">Perfil</button></a></li>
-            <li><a href="/index.php?r=users/settings"><button class="left_column_button <?= $active == 'settings' ? 'active': '' ?>">Definições</button></a></li>
             <li><a href="/index.php?r=documents/index"><button class="left_column_button <?= $active == 'documents' ? 'active': '' ?>">Documentos</button></a></li>
 
         <?php elseif (Yii::$app->user->identity->isBoard()):?>

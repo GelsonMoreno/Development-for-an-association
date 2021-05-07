@@ -119,6 +119,11 @@ class PaymentsController extends Controller
     if(isSet($params['search_field'])){
       $payments = $payments->where(['like', 'description', '%'. $params['search_field'].'%', false]);
     }
+
+    if(!Yii::$app->user->identity->isAdmin()){
+      $payments = $payments->where(['like', 'public', '%'. Yii::$app->user->identity->User_types_id .'%', false]);
+    }
+
     return $payments->orderBy('create_at desc')->all();
   }
 

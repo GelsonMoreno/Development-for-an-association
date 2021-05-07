@@ -81,7 +81,6 @@ class ReceiptsController extends Controller
         $receipts->setPreviousFile();
       }
 
-      $receipts->update_at=date('Y-m-d H:i:s');
       if(Yii::$app->request->post()['Receipts']['public'] == '') {
         $receipts->public = '';
       } else {
