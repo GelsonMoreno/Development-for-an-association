@@ -11,7 +11,7 @@ use yii\helpers\Html;
        <div class="content_settings"  > <?= Html::img('img/settings.png') ;?> Definições </div>
          <div class="settings_head">
             <ul class="settings_ul">
-                <li><a  href="/index.php?r=users/change_data"><button class="settings">Alterar Dados</button> </a></li>
+                <li><a  href="/index.php?r=users/password"><button class="settings">Alterar Dados</button> </a></li>
 
                 <div class="settings">Politica de Privacidade</div>
 

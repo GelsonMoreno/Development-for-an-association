@@ -3,8 +3,10 @@
 
 namespace app\controllers;
 use app\models\User;
+use app\models\User_types;
 use Yii;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class UsersController extends Controller
 {
@@ -18,20 +20,74 @@ class UsersController extends Controller
     return $this->render('index', ['users' => $users]);
   }
 
+  public function actionNew(){
+    $users = new User();
+    $users_types = User_types::find()->all();
+
+    if($users->load(Yii::$app->request->post()) && $users->validate()){
+      $users->create_at = date('Y-m-d H:i:s');
+
+      $users->image = UploadedFile::getInstance($users, 'image');
+      $users->save();
+      $users->image->saveAs(Yii::$app->basePath . '/upload/' . 'user_' . $users->id . '_' . $users->image->baseName . '.' . $users->image->extension);
+
+      return $this->redirect(['users/index']);
+    }
+    return $this->render('new', ['model' => $users, 'users_types' => $users_types]);
+  }
+
+  public function actionShow(){
+    $params = Yii::$app->request->queryParams;
+    $users_id = (int)$params['users_id'];
+    $users = User::findOne(['id'=> $users_id]);
+    return $this->render('show', ['model'=>$users]);
+  }
+
+  public function actionDelete(){
+    $params = Yii::$app->request->queryParams;
+    $users_id = (int)$params['users_id'];
+    $users = User::findOne(['id'=> $users_id]);
+    if($users->delete()){
+      $path = Yii::$app->basePath . '/upload/' . 'user_' . $users->id . '_' . $users->image ;
+      if (file_exists($path)) {
+        unlink($path);
+      }
+    }
+    return $this->redirect(['users/index']);
+  }
+
+  public function actionUpdate(){
+    $params = Yii::$app->request->queryParams;
+    $users_id = (int)$params['users_id'];
+    $users = User::findOne(['id'=> $users_id]);
+    $users_types = User_types::find()->all();
+
+    if($users->load(Yii::$app->request->post()) && $users->validate()){
+      if($users->image == '' or $users->image == Null){
+        $users->setPreviousImage();
+      }
+      $users->update_at=date('Y-m-d H:i:s');
+      $users->update();
+      return $this->redirect(['users/index']);
+    }
+    return $this->render('edit', ['model'=>$users, 'users_types' => $users_types]);
+  }
+
+
   public function actionSettings(){
     if (\Yii::$app->user->isGuest){
       return $this->goHome();
     }
     $users = $this->get_records();
-    return $this->render('settings', ['users' => $users]);
+    return $this->render('settings', ['model' => $users]);
   }
 
-  public function actionChange_data(){
+  public function actionPassword(){
     if (\Yii::$app->user->isGuest){
         return $this->goHome();
     }
     $users = $this->get_records();
-    return $this->render('modify_data', ['users' => $users]);
+    return $this->render('update', ['model' => $users]);
   }
 
     public function actionProfile(){
@@ -39,11 +95,10 @@ class UsersController extends Controller
             return $this->goHome();
         }
         $users = $this->get_records();
-        return $this->render('profile', ['users' => $users]);
+        return $this->render('show', ['model' => $users]);
     }
 
   private function get_records() {
-    //$documents = Documents::find()->where(['Users_id' => \Yii::$app->user->identity->getId()])->orderBy('date desc')->all();
     $params = Yii::$app->request->queryParams;
     $users = User::find();
 

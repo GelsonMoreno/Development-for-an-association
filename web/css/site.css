@@ -554,12 +554,16 @@ th, td {
     line-height: 40px;
     margin-bottom: 15px;
 }
+.sidephoto{
+    display: flex;
+}
 .photo{
     width: 200px ;
     height: 200px;
     border-radius: 100px;
     background:#8D8D8D ;
-    margin-left: 15px;
+    margin-left: 170px;
+    margin-top: 60px;
 }
 
 .confirm{

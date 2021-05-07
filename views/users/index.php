@@ -6,7 +6,7 @@ use \app\models\User_types;
     <?= $this->render('../shared/left_column', ['active' => 'users']);?>
   </div>
   <div class="col-lg">
-    <?= $this->render('../shared/content_header');?>
+    <?= $this->render('../shared/content_header',['new_url'=>'index.php?r=users/new']);?>
       <div class="content_header_users">
           <div class="w3-show-inline-block">
               <div class="w3-bar">
@@ -57,9 +57,9 @@ use \app\models\User_types;
                 <td><?= $users_data->nif ?></td>
                 <td><?= $users_data->number ?></td>
                 <td class="td_button">
-                    <a href="#"><i class="bi bi-person-fill"></i></i></a>
-                    <a href="#"><i class="bi bi-pen-fill"></i></a>
-                    <a href="#"><i class="bi bi-trash-fill"></i></a>
+                    <a href="/index.php?r=users/show&users_id=<?= $users_data->id ?>"><i class="bi bi-person-fill"></i></i></a>
+                    <a href="/index.php?r=users/update&users_id=<?= $users_data->id ?>"><i class="bi bi-pen-fill"></i></a>
+                    <a href="/index.php?r=users/delete&users_id=<?= $users_data->id ?>" data-confirm="Are you sure?"> <i class="bi bi-trash-fill"></i></a>
                 </td>
             </tr>
         <?php endforeach;?>
