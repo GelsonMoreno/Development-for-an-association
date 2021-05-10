@@ -7,12 +7,16 @@ if(!isSet($showNewButton)){
   $showNewButton = true;
 }
 
+if(!isSet($newButtonLabel)){
+  $newButtonLabel = 'Carregar';
+}
+
 ?>
 
 <div class="content_header">
     <input id="input_search_text" class="search_header" type="text" name="search_field" placeholder="Pesquisar...">
     <?php if($showNewButton): ?>
-        <a href="<?= $new_url ?>" class="upload_button" >Carregar</a>
+        <a href="<?= $new_url ?>" class="upload_button" ><?= $newButtonLabel ?></a>
     <?php endif; ?>
 </div>
 

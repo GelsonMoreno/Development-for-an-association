@@ -6,7 +6,7 @@ use \app\models\User_types;
     <?= $this->render('../shared/left_column', ['active' => 'users']);?>
   </div>
   <div class="col-lg">
-    <?= $this->render('../shared/content_header',['new_url'=>'index.php?r=users/new']);?>
+    <?= $this->render('../shared/content_header',['new_url'=>'index.php?r=users/new', 'newButtonLabel'=> 'Criar']);?>
       <div class="content_header_users">
           <div class="w3-show-inline-block">
               <div class="w3-bar">

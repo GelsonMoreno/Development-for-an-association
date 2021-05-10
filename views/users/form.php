@@ -1,4 +1,6 @@
 <?php
+
+use app\models\User_types;
 use \yii\helpers\ArrayHelper;
 ?>
 
@@ -15,9 +17,13 @@ use \yii\helpers\ArrayHelper;
 
 <?= $form->field($model, 'nif', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
 
-<?= $form->field($model, 'birth_date', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
 
-<?= $form->field($model, 'sex', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
+<div id="notAssociated" style="display: <?= $model->isAssociated() ? 'none' : ''?>;">
+
+  <?= $form->field($model, 'birth_date', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
+
+  <?= $form->field($model, 'sex', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
+</div>
 
 <?= $form->field($model, 'password', ['inputOptions'=> ['class'=>'label_indx1']])->passwordInput() ?>
 
@@ -37,19 +43,18 @@ use \yii\helpers\ArrayHelper;
             input_field.parentElement.append(error_input[0]);
             return;
         }
-
     };
 
-    /*document.querySelectorAll('#users_new, user_edit').forEach(function(form){
-        form.onsubmit = function() {
-            $("#error_file_input").remove();
-            if(input_field.value === ''){
-                const error_input = $("<p id='error_file_input' style='color:#a94442;' class='help-block help-block-error'>Ficheiro cannot be blank.</p>");
-                input_field.parentElement.append(error_input[0]);
-                return false;
-            }
-        };
-    });*/
+    document.querySelector('#user-user_types_id').onchange = function(){
+      const associated_id = "<?= User_types::associated_group()->id ?>";
+      if (associated_id === this.value){
+          document.querySelector('#notAssociated').style.display = "none";
+          return;
+      }
+      document.querySelector('#notAssociated').style.display = "";
+      return;
+    };
+
 </script>
 
 

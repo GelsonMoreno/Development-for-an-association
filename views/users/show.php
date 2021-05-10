@@ -28,7 +28,7 @@ use yii\helpers\Html;
                     <div class="label_indx1"><?= $model->nif ?></div>
                     <label>Tipo de utilizador</label><br>
                     <div class="label_indx1"><?= $model->getUserType()->designation ?></div>
-                    <?php if (!Yii::$app->user->identity->isAssociated()):?>
+                    <?php if (!$model->isAssociated()):?>
                     <label>Data de criação</label><br>
                     <div class="label_indx1"><?= $model->create_at ?></div>
                     <label>Data de modificação</label><br>
@@ -38,13 +38,14 @@ use yii\helpers\Html;
                     <label>Data de nascimento</label><br>
                     <div class="label_indx1"><?= $model->birth_date ?></div>
                     <?php endif; ?>
-                    <?php if(Yii::$app->user->identity->isAdmin()): ?>
-                    <label>Palavra-Passe</label><br>
-                    <div class="label_indx1"><?= $model->password ?></div>
-                  <?php endif; ?>
-
                 </div>
-                <div class="photo"><?= Html::img($model->getUserImg()) ?> <span>Foto de perfil</span></div>
+
+                <div class="form-img">
+                    <div class="photo">
+                        <img src="<?= $model->getUserImg() ?>" />
+                    </div>
+                    <div>Foto de perfil</div>
+                </div>
 
             </div>
             <div class="button_cancelar_alterar">

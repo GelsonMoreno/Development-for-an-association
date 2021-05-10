@@ -122,7 +122,7 @@ class User extends ActiveRecord implements IdentityInterface
   }
 
   public function getUserImg(){
-    return 'file:///' . Yii::$app->basePath . '/upload/' . 'user_' . $this->id . '_' . $this->image ;
+    return 'img/upload/' . 'user_' . $this->id . '_'  . $this->image;
 
   }
 

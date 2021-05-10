@@ -29,7 +29,7 @@ class UsersController extends Controller
 
       $users->image = UploadedFile::getInstance($users, 'image');
       $users->save();
-      $users->image->saveAs(Yii::$app->basePath . '/upload/' . 'user_' . $users->id . '_' . $users->image->baseName . '.' . $users->image->extension);
+      $users->image->saveAs(Yii::$app->basePath . '/web/img/upload/' . 'user_' . $users->id . '_' . $users->image->baseName . '.' . $users->image->extension);
 
       return $this->redirect(['users/index']);
     }
@@ -48,7 +48,7 @@ class UsersController extends Controller
     $users_id = (int)$params['users_id'];
     $users = User::findOne(['id'=> $users_id]);
     if($users->delete()){
-      $path = Yii::$app->basePath . '/upload/' . 'user_' . $users->id . '_' . $users->image ;
+      $path = Yii::$app->basePath . '/web/img/upload/' . 'user_' . $users->id . '_' . $users->image ;
       if (file_exists($path)) {
         unlink($path);
       }
@@ -73,7 +73,6 @@ class UsersController extends Controller
     return $this->render('edit', ['model'=>$users, 'users_types' => $users_types]);
   }
 
-
   public function actionSettings(){
     if (\Yii::$app->user->isGuest){
       return $this->goHome();
@@ -83,20 +82,38 @@ class UsersController extends Controller
   }
 
   public function actionPassword(){
-    if (\Yii::$app->user->isGuest){
-        return $this->goHome();
+    $users = User::findOne(['id'=> Yii::$app->user->identity->getId()]);
+    $post_params = Yii::$app->request->post();
+    $password_changed = false;
+    $error = "";
+
+    if($post_params){
+      if($post_params['current_password'] == $users->password){
+        if($post_params['new_password'] != "" && $post_params['new_password'] == $post_params['password_confirm']){
+          $users->updateAttributes(['password' => $post_params['new_password']]);
+          $password_changed = true;
+        } else {
+          $error = "O password não coicidem!";
+        }
+      } else {
+        $error = "O password atual não está correto!";
+      }
     }
-    $users = $this->get_records();
-    return $this->render('update', ['model' => $users]);
+
+    if($password_changed){
+      return $this->redirect(['users/show' , 'users_id' => $users->id]);
+    } else {
+      return $this->render('update', ['model' => $users, 'error' => $error]);
+    }
   }
 
-    public function actionProfile(){
+    /*public function actionProfile(){
         if (\Yii::$app->user->isGuest){
             return $this->goHome();
         }
         $users = $this->get_records();
         return $this->render('show', ['model' => $users]);
-    }
+    }*/
 
   private function get_records() {
     $params = Yii::$app->request->queryParams;

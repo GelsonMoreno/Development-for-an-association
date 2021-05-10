@@ -562,8 +562,20 @@ th, td {
     height: 200px;
     border-radius: 100px;
     background:#8D8D8D ;
-    margin-left: 170px;
-    margin-top: 60px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.form-img{
+    display: flex;
+    flex-direction: column;
+    padding-top: 33px;
+    flex: 1;
+    align-items: center;
+}
+.photo > img{
+    width: 100%;
+    height: 100%;
 }
 
 .confirm{
@@ -628,8 +640,20 @@ th, td {
 }
 
 .profile{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.empety_repository{
+    position: relative;
+    display: block;
+    clear: both;
+    margin: 16px 0;
+    padding: 16px;
+    border-left: calc( 16px / 2) solid #fdbe00;
+    background-color: #fbeab3;
+    color: #212121;
 }
 /*--------footer------*/
 

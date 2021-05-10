@@ -22,6 +22,9 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title>Transtec</title>
     <?php $this->head() ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <?php $this->beginBody() ?>
 <body>
@@ -40,7 +43,8 @@ AppAsset::register($this);
                       <ul class="xxx" style=" list-style: none;">
                           <li style="background: none;">
                               <a href="#">
-                                  <p><?=  Yii::$app->user->identity->name ?><br> <span><?= Yii::$app->user->identity->getUserType()->designation ?></span></p><?= Html::img('img/Profile1.png', ['class'=>'profile'] ) ;?>
+                                  <p><?=  Yii::$app->user->identity->name ?><br> <span><?= Yii::$app->user->identity->getUserType()->designation ?></span></p>
+                                  <img src="<?= Yii::$app->user->identity->getUserImg() ?>" class="profile" onerror="this.src='img/Profile1.png';"/>
                               </a>
 
                               <div class="dropdown">
