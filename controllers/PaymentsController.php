@@ -79,8 +79,15 @@ class PaymentsController extends Controller
     $current_value = $payments->value;
 
     if($payments->load(Yii::$app->request->post()) && $payments->validate()){
-      if($payments->file == '' or $payments->file == Null){
-        $payments->setPreviousFile();
+      $payments->setPreviousFile();
+      $current_file = UploadedFile::getInstance($payments, 'file');
+      if($current_file){
+        $path = Yii::$app->basePath . '/upload/' . 'payment_' . $payments->id . '_' . $payments->file;
+        if (file_exists($path)) {
+          unlink($path);
+        }
+        $payments->file = $current_file;
+        $payments->file->saveAs(Yii::$app->basePath . '/upload/' . 'payment_' . $payments->id . '_' . $payments->file->baseName . '.' . $payments->file->extension);
       }
 
       if(Yii::$app->request->post()['Payments']['public'] == '') {

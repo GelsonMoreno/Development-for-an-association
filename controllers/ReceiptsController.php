@@ -79,6 +79,15 @@ class ReceiptsController extends Controller
     if($receipts->load(Yii::$app->request->post()) && $receipts->validate()){
       if($receipts->file == '' or $receipts->file == Null){
         $receipts->setPreviousFile();
+        $current_file = UploadedFile::getInstance($receipts, 'file');
+        if($current_file){
+          $path = Yii::$app->basePath . '/upload/' . 'receipt_' . $receipts->id . '_' . $receipts->file;
+          if (file_exists($path)) {
+            unlink($path);
+          }
+          $receipts->file = $current_file;
+          $receipts->file->saveAs(Yii::$app->basePath . '/upload/' . 'receipt_' . $receipts->id . '_' . $receipts->file->baseName . '.' . $receipts->file->extension);
+        }
       }
 
       if(Yii::$app->request->post()['Receipts']['public'] == '') {

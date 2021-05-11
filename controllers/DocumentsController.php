@@ -70,9 +70,17 @@ class DocumentsController extends Controller
     $documents = Documents::findOne(['id' => $document_id]);
 
     if($documents->load(Yii::$app->request->post()) && $documents->validate()){
-      if($documents->file == '' or $documents->file == Null){
-        $documents->setPreviousFile();
+      $documents->setPreviousFile();
+      $current_file = UploadedFile::getInstance($documents, 'file');
+      if($current_file){
+        $path = Yii::$app->basePath . '/upload/' . 'document_' . $documents->id . '_' . $documents->file;
+        if (file_exists($path)) {
+          unlink($path);
+        }
+        $documents->file = $current_file;
+        $documents->file->saveAs(Yii::$app->basePath . '/upload/' . 'document_' . $documents->id . '_' . $documents->file->baseName . '.' . $documents->file->extension);
       }
+
       $documents->update_at=date('Y-m-d H:i:s');
       if(Yii::$app->request->post()['Documents']['public'] == '') {
         $documents->public = '';
