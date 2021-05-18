@@ -28,7 +28,8 @@ class LoginController extends Controller
       return $this->redirect(['documents/index']); // Colocar aqui a path que o user deve ir apos o login
     }
 
-    return $this->goHome(); // Colocar aqui o que fazer caso o user não conseguir logar
+    return $this->redirect(['site/index', 'login_error' => true]); // Colocar aqui o que fazer caso o user não conseguir logar
+
   }
 
   /**

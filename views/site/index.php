@@ -16,9 +16,9 @@ use \yii\helpers\Html;
             <?php ActiveForm::end(); ?>
 
             <?php if($submitted): ?>
-                <div>
-                    Foi submetido
-                </div>
+                <script>
+                    toastr.success("O seu formulário foi submetido com sucesso!!");
+                </script>
             <?php endif; ?>
             <script>
                 if ( window.history.replaceState ) {
@@ -45,3 +45,9 @@ use \yii\helpers\Html;
         </div>
     </div>
 </div>
+
+<?php if ($error != '') : ?>
+    <script>
+        toastr.error("<?= $error ?>");
+    </script>
+<?php endif;?>

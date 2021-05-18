@@ -20,7 +20,7 @@ use \yii\helpers\ArrayHelper;
 
 <div id="notAssociated" style="display: <?= $model->isAssociated() ? 'none' : ''?>;">
 
-  <?= $form->field($model, 'birth_date', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
+  <?= $form->field($model, 'birth_date', ['inputOptions'=> ['class'=>'label_indx1 datepicker', 'autocomplete' => 'off']]) ?>
 
   <?= $form->field($model, 'sex', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
 </div>
@@ -54,6 +54,12 @@ use \yii\helpers\ArrayHelper;
       document.querySelector('#notAssociated').style.display = "";
       return;
     };
+
+
+    window.addEventListener("load", function(){
+        $( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+    });
+
 
 </script>
 

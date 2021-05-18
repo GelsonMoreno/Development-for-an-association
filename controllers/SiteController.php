@@ -29,13 +29,26 @@ class SiteController extends Controller
         $contact_us = new Contact_us();
         $submitted = false;
 
+        $params = Yii::$app->request->queryParams;
+
+        $login_error = isset($params['login_error']) ? 'Desculpa, mas o teu email ou a senha não estão corretas.Verifica e tenta novamente.': '';
+
         if($contact_us->load(Yii::$app->request->post()) && $contact_us->validate()){
           $submitted = true;
           $contact_us->date=date('Y-m-d H:i:s');
           $contact_us->save();
           $contact_us = new Contact_us;
         }
-        return $this->render('index', ['model' =>$contact_us, 'submitted' => $submitted, 'news' => $news]);
+
+        $viewdata = [
+          'model' => $contact_us,
+          'submitted' => $submitted,
+          'news' => $news,
+          'error' => $login_error
+        ];
+
+
+        return $this->render('index', $viewdata);
 
 
 

@@ -11,14 +11,16 @@ use \yii\helpers\ArrayHelper;
 
 <?= $form->field($model, 'value', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
 
-<?= $form->field($model, 'begin_date', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
+<?= $form->field($model, 'begin_date', ['inputOptions'=> ['class'=>'label_indx1 datepicker', 'autocomplete' => 'off']]) ?>
 
-<?= $form->field($model, 'end_date', ['inputOptions'=> ['class'=>'label_indx1']]) ?>
-
-
-
+<?= $form->field($model, 'end_date', ['inputOptions'=> ['class'=>'label_indx1 datepicker', 'autocomplete' => 'off']]) ?>
 
 <?= $form->field($model, 'description', ['inputOptions'=> ['class'=>'description']])->textarea() ?>
 
 
+<script>
+    window.addEventListener("load", function(){
+        $( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+    });
 
+</script>
