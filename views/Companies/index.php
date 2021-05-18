@@ -6,7 +6,7 @@ use yii\helpers\Html; ?>
         <?= $this->render('../shared/left_column', ['active' => 'companies']);?>
     </div>
     <div class="col-lg">
-        <?= $this->render('../shared/content_header', ['new_url'=>'index.php?r=companies/new']);?>
+        <?= $this->render('../shared/content_header', ['new_url'=>'index.php?r=companies/new', 'newButtonLabel'=> 'Criar']);?>
 
         <?php if(count($companies) > 0): ?>
         <table id="t01">
