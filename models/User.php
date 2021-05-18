@@ -110,7 +110,7 @@ class User extends ActiveRecord implements IdentityInterface
       'User_types_id'=> 'Tipo de utilizador',
       'nif' => 'Nif',
       'number' => 'Telefone',
-      'image' => 'Imagem'
+      'image' => 'Adicionar foto de perfil'
 
 
     ];

@@ -40,6 +40,23 @@ class UsersController extends Controller
     $params = Yii::$app->request->queryParams;
     $users_id = (int)$params['users_id'];
     $users = User::findOne(['id'=> $users_id]);
+
+    $post_params = Yii::$app->request->post();
+    if($post_params){
+      $dummy_user = new User();
+      $dummy_user->load($post_params);
+      $current_file = UploadedFile::getInstance($dummy_user, 'image');
+      if($current_file){
+        $path = Yii::$app->basePath . '/web/img/upload/' . 'user_' . $users->id . '_' . $users->image;
+        if (file_exists($path)) {
+          unlink($path);
+        }
+        $users->image = $current_file;
+        $users->image->saveAs(Yii::$app->basePath . '/web/img/upload/' . 'user_' . $users->id . '_' . $users->image->baseName . '.' . $users->image->extension);
+      }
+      $users->updateAttributes(['image' => $current_file]);
+    }
+
     return $this->render('show', ['model'=>$users]);
   }
 
@@ -93,10 +110,10 @@ class UsersController extends Controller
           $users->updateAttributes(['password' => $post_params['new_password']]);
           $password_changed = true;
         } else {
-          $error = "O password não coicidem!";
+          $error = "As senhas não correspondem!";
         }
       } else {
-        $error = "O password atual não está correto!";
+        $error = "A senha atual não está correta!";
       }
     }
 
@@ -106,14 +123,6 @@ class UsersController extends Controller
       return $this->render('update', ['model' => $users, 'error' => $error]);
     }
   }
-
-    /*public function actionProfile(){
-        if (\Yii::$app->user->isGuest){
-            return $this->goHome();
-        }
-        $users = $this->get_records();
-        return $this->render('show', ['model' => $users]);
-    }*/
 
   private function get_records() {
     $params = Yii::$app->request->queryParams;
