@@ -20,17 +20,6 @@ class CompaniesController extends Controller
 
     }
 
-    private function get_records(){
-        $companies = Companies::find();
-        $params = Yii::$app->request->queryParams;
-
-        if(isSet($params['search_field'])){
-            $companies = $companies->where(['like', 'title', '%'. $params['search_field'].'%', false]);
-        }
-
-        return $companies->orderBy('balance desc')->all();
-    }
-
     public function actionNew(){
         $companies = new Companies();
         if($companies->load(Yii::$app->request->post()) && $companies->validate()) {
@@ -58,5 +47,16 @@ class CompaniesController extends Controller
         $companies = Companies::findOne(['id'=> $companies_id]);
         $companies->delete();
         return $this->redirect(['companies/index']);
+    }
+
+    private function get_records(){
+      $companies = Companies::find();
+      $params = Yii::$app->request->queryParams;
+
+      if(isSet($params['search_field'])){
+        $companies = $companies->where(['like', 'name', '%'. $params['search_field'].'%', false]);
+      }
+
+      return $companies->orderBy('name')->all();
     }
 }
