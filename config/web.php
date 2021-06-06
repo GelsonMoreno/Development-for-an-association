@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' => 'pt_PT',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -33,11 +34,13 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
+          'class' => 'wadeshuler\sendgrid\Mailer',
+          //'viewPath' => '@common/mail',
+          // send all mails to a file by default. You have to set
+          // 'useFileTransport' to false and configure a transport
+          // for the mailer to send real emails.
+          'useFileTransport' => false,
+          'apiKey' => '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',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
