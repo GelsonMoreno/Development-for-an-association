@@ -14,8 +14,13 @@ class Contact_usController extends Controller
     if (\Yii::$app->user->isGuest){
       return $this->goHome();
     }
-    $contac_us = $this->get_records();
-    return $this->render('index',['contact_us' => $contac_us]);
+    $contact_us = $this->get_records();
+    $error = '';
+    $params = Yii::$app->request->queryParams;
+    if(isset($params['error']) && $params['error']=='1'){
+      $error = 'Não foi possivel apagar este registo!';
+    }
+    return $this->render('index',['contact_us' => $contact_us, 'error' => $error]);
 
   }
 
@@ -32,19 +37,26 @@ class Contact_usController extends Controller
     $params = Yii::$app->request->queryParams;
     $contact_us_id = (int)$params['contact_us_id'];
     $contact_us = Contact_us::findOne(['id'=> $contact_us_id]);
-    $contact_us->delete();
 
-    return $this->redirect(['contact_us/index']);
+    $error = '';
+    try{
+      $contact_us->delete();
+
+    } catch (\yii\db\Exception $e){
+      $error = '1';
+    }
+
+    return $this->redirect(['contact_us/index', 'error' => $error]);
   }
 
   private function get_records() {
-    $contac_us = Contact_us::find();
+    $contact_us = Contact_us::find();
     $params = Yii::$app->request->queryParams;
 
     if(isSet($params['search_field'])){
-      $contac_us = $contac_us->where(['like', 'name', '%'. $params['search_field'].'%', false]);
+      $contact_us = $contact_us->where(['like', 'name', '%'. $params['search_field'].'%', false]);
     }
 
-    return $contac_us->orderBy('date desc')->all();
+    return $contact_us->orderBy('create_at desc')->all();
   }
 }

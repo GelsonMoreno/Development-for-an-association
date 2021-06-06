@@ -17,12 +17,14 @@ use \yii\helpers\Html;
         <label>Number</label><br>
         <div class="label_indx1"><?= $model->number ?></div>
         <label>Data</label><br>
-        <div class="label_indx1"><?= $model->date ?></div>
+        <div class="label_indx1"><?= $model->create_at ?></div>
       <label>Descrição</label><br>
       <div class="description"><?= $model->description ?></div>
 
       <div class="button_cancelar_alterar">
+        <?= Html::a('Responder', ['/message/new', 'contact_us_id'=> $model->id], ['class'=>'btn btn-primary']) ?>
         <?= Html::a('Voltar', ['/contact_us/index'], ['class'=>'btn btn-primary']) ?>
+
       </div>
     </div>
 

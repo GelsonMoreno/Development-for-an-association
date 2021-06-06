@@ -21,12 +21,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
       if (!\Yii::$app->user->isGuest){
         return $this->redirect(['documents/index']);
       }
         $this->view->params['login_form'] = new LoginForm();
         $news = News::find()->orderBY('create_at desc')->all();
         $contact_us = new Contact_us();
+        $contact_us->state = "Não respondido";
         $submitted = false;
 
         $params = Yii::$app->request->queryParams;
@@ -35,7 +37,7 @@ class SiteController extends Controller
 
         if($contact_us->load(Yii::$app->request->post()) && $contact_us->validate()){
           $submitted = true;
-          $contact_us->date=date('Y-m-d H:i:s');
+          $contact_us->create_at=date('Y-m-d H:i:s');
           $contact_us->save();
           $contact_us = new Contact_us;
         }
