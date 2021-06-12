@@ -22,13 +22,19 @@ use \yii\helpers\Html;
       <div class="description"><?= $model->description ?></div>
 
       <div class="button_cancelar_alterar">
-        <?= Html::a('Responder', ['/message/new', 'contact_us_id'=> $model->id], ['class'=>'btn btn-primary']) ?>
+        <?php if($model->Message_id): ?>
+            <?= Html::a('Ver mensagem', ['/message/show', 'message_id'=> $model->id], ['class'=>'btn btn-primary']) ?>
+        <?php else: ?>
+          <?= Html::a('Responder', ['/message/new', 'contact_us_id'=> $model->id], ['class'=>'btn btn-primary']) ?>
+        <?php endif; ?>
         <?= Html::a('Voltar', ['/contact_us/index'], ['class'=>'btn btn-primary']) ?>
 
       </div>
     </div>
-
-
   </div>
-
 </div>
+<?php if($sucess_sent): ?>
+    <script>
+        toastr.success('O seu email foi enviado com sucesso!!');
+    </script>
+<?php endif; ?>

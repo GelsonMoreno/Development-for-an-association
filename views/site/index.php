@@ -35,7 +35,7 @@ use \yii\helpers\Html;
                 <ul class="main-content_news">
                 <?php foreach ($news as $news_data): ?>
                     <li>
-                        <a href="#"> <h3 class="title_news"><?= Html::img('img/seta.png', $options = ['class'=>'imgIndexSeta']); ?><?= $news_data->title ?></h3></a>
+                        <a href="/index.php?r=news/open&news_id=<?= $news_data->id ?>" target="_blank"> <h3 class="title_news"><?= Html::img('img/seta.png', $options = ['class'=>'imgIndexSeta']); ?><?= $news_data->title ?></h3></a>
                         <p class="description_news"><?= $news_data->text ?></p>
                     </li>
                 <?php endforeach;?>

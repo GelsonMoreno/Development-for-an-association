@@ -26,12 +26,8 @@ use yii\helpers\Html; ?>
                     <td class="td_button">
                         <a href="/index.php?r=documents/show&document_id=<?= $document_data->id ?>"><i class="bi bi-eye-fill"></i></a>
                         <a href="<?= $document_data->documentUrlForDownload() . '&inline=true' ?>" target="_blank"><i class="bi bi-file-earmark-text-fill"></i></a>
-                        <a href="/index.php?r=documents/update&document_id=<?= $document_data->id ?>">
-                            <i class="bi bi-pen-fill"></i>
-                        </a>
-                        <a href="/index.php?r=documents/delete&document_id=<?= $document_data->id ?>" data-confirm="Are you sure?">
-                            <i class="bi bi-trash-fill"></i>
-                        </a>
+                        <a href="/index.php?r=documents/update&document_id=<?= $document_data->id ?>"><i class="bi bi-pen-fill"></i></a>
+                        <a href="/index.php?r=documents/delete&document_id=<?= $document_data->id ?>" data-confirm="Are you sure?"><i class="bi bi-trash-fill"></i></a>
                     </td>
                 </tr>
             <?php endforeach;?>
