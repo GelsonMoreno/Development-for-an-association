@@ -16,8 +16,9 @@ use \yii\helpers\Html;
       ]); ?>
       <?= $this->render('form', ['model' => $model, 'form' => $form]);?>
 
-      <div class="button_cancelar_alterar"><?= Html::submitButton('Guardar', ['class'=>'btn btn-primary']) ?>
-        <?= Html::a('Cancel', ['/payments/index'], ['class'=>'btn btn-primary']) ?>
+      <div class="button_cancelar_alterar">
+        <?= Html::submitButton('Guardar', ['class'=>'btn btn-primary']) ?>
+        <?= Html::a('Cancel', ['/contact_us/show', 'contact_us_id' => $model->Contact_us_id], ['class'=>'btn btn-primary']) ?>
       </div>
       <?php ActiveForm::end(); ?>
     </div>

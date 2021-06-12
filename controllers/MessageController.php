@@ -9,14 +9,6 @@ use yii\web\Controller;
 
 class MessageController extends Controller
 {
-  public function actionIndex(){
-    if (\Yii::$app->user->isGuest){
-      return $this->goHome();
-    }
-    $message = $this->get_records();
-    return $this->render('index',['message' => $message]);
-
-  }
 
   public function actionNew(){
     $message= new Message();
@@ -31,8 +23,9 @@ class MessageController extends Controller
       $this->sendMail($message);
       $contactUs = $message->getContactUs();
       $contactUs->state = "Respondido";
+      $contactUs->Message_id = $message->id;
       $contactUs->save();
-      return $this->redirect(['message/index']);
+      return $this->redirect(['contact_us/show', 'contact_us_id' => $contactUs->id, 'sucess_sent' => true ]);
     }
 
     return $this->render('new', ['model'=>$message]);

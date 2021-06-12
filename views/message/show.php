@@ -20,7 +20,7 @@ use \yii\helpers\Html;
         <div class="label_indx1"><?= $model->create_at ?></div>
 
       <div class="button_cancelar_alterar">
-        <?= Html::a('Voltar', ['/message/index'], ['class'=>'btn btn-primary']) ?>
+        <?= Html::a('Voltar', ['/contact_us/index'], ['class'=>'btn btn-primary']) ?>
 
       </div>
     </div>
