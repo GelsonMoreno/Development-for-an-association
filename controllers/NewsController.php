@@ -2,6 +2,7 @@
 
 
 namespace app\controllers;
+use app\models\LoginForm;
 use Yii;
 use app\models\News;
 use yii\web\Controller;
@@ -58,6 +59,16 @@ class NewsController extends Controller
     }
 
     return $this->render('edit', ['model'=>$news]);
+  }
+
+  public function actionOpen(){
+
+    $this->view->params['login_form'] = new LoginForm();
+    $params = Yii::$app->request->queryParams;
+    $news_id = (int)$params['news_id'];
+    $news = News::findOne(['id'=> $news_id]);
+
+    return $this->render('open', ['model'=>$news]);
   }
 
 
