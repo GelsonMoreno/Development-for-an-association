@@ -120,9 +120,10 @@ class DocumentsController extends Controller
       $documents = $documents->where(['like', 'public', '%'. Yii::$app->user->identity->User_types_id .'%', false]);
     }
 
-    if(Yii::$app->user->identity->isAssociated()){
+    /*if(Yii::$app->user->identity->isAssociated()){
       $documents = $documents->where(['Users_id' => \Yii::$app->user->identity->getId()]);
-    }
+    }*/
+
     if(isSet($params['search_field'])){
       $documents = $documents->andWhere(['like', 'title', '%'. $params['search_field'].'%', false]);
     }

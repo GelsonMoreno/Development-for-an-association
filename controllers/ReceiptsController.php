@@ -127,12 +127,12 @@ class ReceiptsController extends Controller
     $receipts = Receipts::find();
     $params = Yii::$app->request->queryParams;
 
-    if(isSet($params['search_field'])){
-      $receipts = $receipts->where(['like', 'title', '%'. $params['search_field'].'%', false]);
-    }
-
     if(!Yii::$app->user->identity->isAdmin()){
       $receipts = $receipts->where(['like', 'public', '%'. Yii::$app->user->identity->User_types_id .'%', false]);
+    }
+
+    if(isSet($params['search_field'])){
+      $receipts = $receipts->andWhere(['like', 'title', '%'. $params['search_field'].'%', false]);
     }
 
     return $receipts->orderBy('create_at desc')->all();
