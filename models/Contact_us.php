@@ -25,4 +25,16 @@ class Contact_us  extends ActiveRecord
         'description'=>'Descrição'
       ];
     }
+
+    public function destroyWithMessage(){
+      if($this->Message_id){
+        $message = Message::findOne(['id' => $this->Message_id]);
+        $message->Contact_us_id = null;
+        $message->save();
+        $this->Message_id = null;
+        $this->save();
+        $message->delete();
+      }
+      $this->delete();
+    }
 }

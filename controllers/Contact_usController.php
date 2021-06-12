@@ -28,8 +28,12 @@ class Contact_usController extends Controller
     $params = Yii::$app->request->queryParams;
     $contact_us_id = (int)$params['contact_us_id'];
     $contact_us = Contact_us::findOne(['id'=> $contact_us_id]);
+    $sucess_sent = false;
+    if(isset($params['sucess_sent'])){
+      $sucess_sent = true;
+    }
 
-    return $this->render('show', ['model'=>$contact_us]);
+    return $this->render('show', ['model'=>$contact_us, 'sucess_sent' => $sucess_sent]);
 
   }
 
@@ -40,7 +44,7 @@ class Contact_usController extends Controller
 
     $error = '';
     try{
-      $contact_us->delete();
+      $contact_us->destroyWithMessage();
 
     } catch (\yii\db\Exception $e){
       $error = '1';

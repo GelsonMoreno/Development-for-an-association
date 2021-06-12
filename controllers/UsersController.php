@@ -23,17 +23,35 @@ class UsersController extends Controller
   public function actionNew(){
     $users = new User();
     $users_types = User_types::find()->all();
-
+    $params = Yii::$app->request->queryParams;
+    $error ='';
+    if(isset($params['error']) && $params['error']=='1') {
+      $error = 'Esse email já existe!';
+    }
     if($users->load(Yii::$app->request->post()) && $users->validate()){
       $users->create_at = date('Y-m-d H:i:s');
 
       $users->image = UploadedFile::getInstance($users, 'image');
-      $users->save();
-      $users->image->saveAs(Yii::$app->basePath . '/web/img/upload/' . 'user_' . $users->id . '_' . $users->image->baseName . '.' . $users->image->extension);
+      $error = '';
+      try{
+        $users->save();
 
-      return $this->redirect(['users/index']);
+      } catch (\yii\db\Exception $e){
+        $error = '1';
+
+      }
+
+      if($users->image != null){
+        $users->image->saveAs(Yii::$app->basePath . '/web/img/upload/' . 'user_' . $users->id . '_' . $users->image->baseName . '.' . $users->image->extension);
+      }
+
+    if($error !=1){
+      return $this->redirect(['users/index',  'error' => $error]);
+
     }
-    return $this->render('new', ['model' => $users, 'users_types' => $users_types]);
+    }
+
+    return $this->render('new', ['model' => $users, 'users_types' => $users_types, 'error' => $error]);
   }
 
   public function actionShow(){

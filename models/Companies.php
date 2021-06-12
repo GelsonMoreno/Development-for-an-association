@@ -20,17 +20,15 @@ class Companies extends ActiveRecord
       $this->update();
   }
 
-    public function attributeLabels(){
+  public function attributeLabels(){
 
-        return [
-            'name' => 'Nome',
-            'balence'=> 'Saldo',
+      return [
+          'name' => 'Nome',
+          'balence'=> 'Saldo',
 
 
-        ];
-    }
-    public function getProject(){
-        return Companies::findOne(['id' => $this->Companies_id]);
-    }
+      ];
+  }
+
 
 }
