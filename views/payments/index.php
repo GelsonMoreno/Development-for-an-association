@@ -5,7 +5,7 @@
     <?= $this->render('../shared/left_column', ['active' => 'payments']);?>
   </div>
   <div class="col-lg">
-    <?= $this->render('../shared/content_header', ['new_url'=>'index.php?r=payments/new']);?>
+    <?= $this->render('../shared/content_header', ['new_url'=>'index.php?r=payments/new', 'exportButton' => true, 'export_url'=> '/index.php?r=payments/export']);?>
     <?= $this->render('../shared/content_balance', ['total_money' => $total_money]);?>
 
     <?php if(count($payments) > 0): ?>

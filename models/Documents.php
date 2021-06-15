@@ -27,7 +27,9 @@ class Documents extends ActiveRecord
       'update_at' =>'Data de criação',
       'description'=>'Descrição',
       'file' => 'Ficheiro',
-      'public' =>'Permissão'
+      'public' =>'Permissão',
+      'create_at' => 'Data de Criação'
+
     ];
   }
 

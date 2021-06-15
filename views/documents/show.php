@@ -9,6 +9,7 @@ use \yii\helpers\Html;
     <div class="col-lg">
 
         <div class="wall_title_blue">Detalhe do documento</div>
+
         <div class="form-group">
             <label>Título</label><br>
             <div class="label_indx"><?= $model->title ?></div>
@@ -26,7 +27,9 @@ use \yii\helpers\Html;
                      <a href="<?= $model->documentUrlForDownload() ?>"><i class="bi bi-file-earmark-text-fill"></i>Documento</a>
                  </div>
             </div>
+
             <div class="button_cancelar_alterar">
+              <?= Html::a('ExportarPDF', ["/documents/pdf", 'document_id' => $model->id] ,['class'=>'btn btn-primary', 'target'=> '_blank']) ?>
               <?= Html::a('Voltar', ['/documents/index'], ['class'=>'btn btn-primary']) ?>
             </div>
         </div>

@@ -29,7 +29,8 @@ class Payments extends ActiveRecord
             'value'=> 'Valor',
             'address'=> 'Endreço',
             'payment_type'=> 'Modo de pagemnto',
-            'Projects_id' => 'Projectos'
+            'Projects_id' => 'Projectos',
+            'create_at' => 'Data de Criação'
 
         ];
     }

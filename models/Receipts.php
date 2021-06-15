@@ -29,7 +29,9 @@ class Receipts extends ActiveRecord
       'address' => 'Endereço',
       'Projects_id' => 'Projetos',
       'Companies_id' => 'Empresas',
-      'value' => 'Valor'
+      'value' => 'Valor',
+      'create_at' => 'Data de Criação'
+
     ];
   }
   public function setUserID(){

@@ -1,14 +1,20 @@
 <?php
 
-use yii\helpers\Html; ?>
+use yii\helpers\Html;
+
+
+
+?>
 <div class='row'>
     <div class="col-sm">
         <?= $this->render('../shared/left_column', ['active' => 'documents']);?>
     </div>
     <div class="col-lg">
-      <?= $this->render('../shared/content_header', ['new_url'=>'index.php?r=documents/new']);?>
+      <?= $this->render('../shared/content_header', ['new_url'=>'index.php?r=documents/new', 'exportButton' => true, 'export_url'=> '/index.php?r=documents/export']);?>
 
-      <?php if(count($documents) > 0): ?>
+
+
+        <?php if(count($documents) > 0): ?>
           <table id="t01">
               <tr>
                   <th>Título</th>

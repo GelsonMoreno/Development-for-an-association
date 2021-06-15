@@ -33,7 +33,8 @@ use \yii\helpers\Html;
                 </div>
             </div>
             <div class="button_cancelar_alterar">
-                <?= Html::a('Voltar', ['/payments/index'], ['class'=>'btn btn-primary']) ?>
+              <?= Html::a('ExportarPDF', ['/payments/pdf', 'payment_id'=> $model->id], ['class'=>'btn btn-primary', 'target'=> '_blank']) ?>
+              <?= Html::a('Voltar', ['/payments/index'], ['class'=>'btn btn-primary']) ?>
             </div>
         </div>
 
