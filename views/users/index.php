@@ -59,7 +59,7 @@ use \app\models\User_types;
                 <td class="td_button">
                     <a href="/index.php?r=users/show&users_id=<?= $users_data->id ?>"><i class="bi bi-person-fill"></i></i></a>
                     <a href="/index.php?r=users/update&users_id=<?= $users_data->id ?>"><i class="bi bi-pen-fill"></i></a>
-                    <a href="/index.php?r=users/delete&users_id=<?= $users_data->id ?>" data-confirm="Are you sure?"> <i class="bi bi-trash-fill"></i></a>
+                    <a href="/index.php?r=users/delete&users_id=<?= $users_data->id ?>" data-confirm="Tens a certeza que pretendes eliminar este registro?"> <i class="bi bi-trash-fill"></i></a>
                 </td>
             </tr>
         <?php endforeach;?>

@@ -25,7 +25,7 @@
                       <a href="/index.php?r=news/update&news_id=<?= $news_data->id ?>">
                           <i class="bi bi-pen-fill"></i>
                       </a>
-                      <a href="/index.php?r=news/delete&news_id=<?= $news_data->id ?>" data-confirm="Are you sure?">
+                      <a href="/index.php?r=news/delete&news_id=<?= $news_data->id ?>" data-confirm="Tens a certeza que pretendes eliminar este registro?">
                           <i class="bi bi-trash-fill"></i>
                       </a>
                   </td>

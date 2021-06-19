@@ -23,7 +23,7 @@ use \yii\helpers\Html;
 
       <div class="button_cancelar_alterar">
         <?php if($model->Message_id): ?>
-            <?= Html::a('Ver mensagem', ['/message/show', 'message_id'=> $model->id], ['class'=>'btn btn-primary']) ?>
+            <?= Html::a('Ver mensagem', ['/message/show', 'message_id'=> $model->Message_id], ['class'=>'btn btn-primary']) ?>
         <?php else: ?>
           <?= Html::a('Responder', ['/message/new', 'contact_us_id'=> $model->id], ['class'=>'btn btn-primary']) ?>
         <?php endif; ?>

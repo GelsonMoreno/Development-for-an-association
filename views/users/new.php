@@ -25,9 +25,3 @@ use \yii\helpers\Html;
     </div>
 
 </div>
-<?php if($error != ''): ?>
-    <!--<div><?= $error ?></div>-->
-    <script>
-        toastr.error('<?= $error ?>');
-    </script>
-<?php endif; ?>

@@ -22,7 +22,7 @@ use yii\helpers\Html; ?>
 
                     <td class="td_button">
                         <a href="/index.php?r=companies/update&companies_id=<?= $companies_data->id ?>"><i class="bi bi-pen-fill"></i></a>
-                        <a href="/index.php?r=companies/delete&companies_id=<?= $companies_data->id ?>" data-confirm="Are you sure?"><i class="bi bi-trash-fill"></i></a>
+                        <a href="/index.php?r=companies/delete&companies_id=<?= $companies_data->id ?>" data-confirm="Tens a certeza que pretendes eliminar este registro?"><i class="bi bi-trash-fill"></i></a>
                     </td>
                 </tr>
             <?php endforeach;?>

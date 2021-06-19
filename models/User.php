@@ -93,7 +93,9 @@ class User extends ActiveRecord implements IdentityInterface
     return [
       [['name', 'birth_date', 'sex', 'address', 'password', 'email', 'nif', 'number'], 'string'],
       [['name', 'address', 'password', 'email', 'nif', 'number','User_types_id'], 'required'],
-      [['User_types_id'], 'integer'],
+      [['User_types_id', 'nif'], 'integer'],
+      [['email', 'nif'], 'unique'],
+      ['nif', 'is9NumbersOnly'],
       [['image'], 'file']
     ];
   }
@@ -116,6 +118,12 @@ class User extends ActiveRecord implements IdentityInterface
     ];
   }
 
+  public function is9NumbersOnly($attribute)
+  {
+    if (!preg_match('/^[0-9]{9}$/', $this->$attribute)) {
+      $this->addError($attribute, 'Deve conter apenas 9 digios.');
+    }
+  }
 
   public function getUserType(){
     return User_types::findOne(['id' => $this->User_types_id]);

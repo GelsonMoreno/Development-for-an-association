@@ -31,7 +31,7 @@ use yii\helpers\Html; ?>
                         <a href="/index.php?r=message/show&message_id=<?= $contact_us_data->Message_id ?>"><i class="bi bi-mailbox2"></i></a>
                     <?php endif; ?>
                       <a href="/index.php?r=contact_us/show&contact_us_id=<?= $contact_us_data->id ?>"><i class="bi bi-eye-fill"></i></a>
-                      <a href="/index.php?r=contact_us/delete&contact_us_id=<?= $contact_us_data->id ?>" data-confirm="Are you sure?"><i class="bi bi-trash-fill"></i></a>
+                      <a href="/index.php?r=contact_us/delete&contact_us_id=<?= $contact_us_data->id ?>" data-confirm="Tens a certeza que pretendes eliminar este registro?"><i class="bi bi-trash-fill"></i></a>
                   </td>
               </tr>
           <?php endforeach;?>

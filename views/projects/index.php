@@ -30,7 +30,7 @@ use yii\helpers\Html; ?>
                      <td class="td_button">
                          <a href="/index.php?r=projects/show&projects_id=<?= $projects_data->id ?>"><i class="bi bi-eye-fill"></i></a>
                          <a href="/index.php?r=projects/update&projects_id=<?= $projects_data->id ?>"><i class="bi bi-pen-fill"></i></a>
-                         <a href="/index.php?r=projects/delete&projects_id=<?= $projects_data->id ?>" data-confirm="Are you sure?"><i class="bi bi-trash-fill"></i></a>
+                         <a href="/index.php?r=projects/delete&projects_id=<?= $projects_data->id ?>" data-confirm="Tens a certeza que pretendes eliminar este registro?"><i class="bi bi-trash-fill"></i></a>
                      </td>
                  </tr>
              <?php endforeach;?>
@@ -41,3 +41,4 @@ use yii\helpers\Html; ?>
   </div>
 
 </div>
+

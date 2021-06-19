@@ -30,7 +30,7 @@
                       <a href="<?= $payments_data->paymentUrlForDownload() . '&inline=true' ?>" target="_blank"><i class="bi bi-file-earmark-text-fill"></i></a>
 
                       <a href="/index.php?r=payments/update&payment_id=<?= $payments_data->id ?>"><i class="bi bi-pen-fill"></i></a>
-                      <a href="/index.php?r=payments/delete&payment_id=<?= $payments_data->id ?>" data-confirm="Are you sure?"><i class="bi bi-trash-fill"></i></a>
+                      <a href="/index.php?r=payments/delete&payment_id=<?= $payments_data->id ?>" data-confirm="Tens a certeza que pretendes eliminar este registro?"><i class="bi bi-trash-fill"></i></a>
                   </td>
               </tr>
           <?php endforeach;?>

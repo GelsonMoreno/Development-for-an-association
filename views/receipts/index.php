@@ -29,7 +29,7 @@
                           <a href="/index.php?r=receipts/show&receipts_id=<?= $receipts_data->id ?>"><i class="bi bi-eye-fill"></i></a>
                           <a href="<?= $receipts_data->receiptUrlForDownload() . '&inline=true' ?>" target="_blank"><i class="bi bi-file-earmark-text-fill"></i></a>
                           <a href="/index.php?r=receipts/update&receipts_id=<?= $receipts_data->id ?>"><i class="bi bi-pen-fill"></i></a>
-                          <a href="/index.php?r=receipts/delete&receipts_id=<?= $receipts_data->id ?>" data-confirm="Are you sure?"
+                          <a href="/index.php?r=receipts/delete&receipts_id=<?= $receipts_data->id ?>" data-confirm="Tens a certeza que pretendes eliminar este registro?"
                           <i class="bi bi-trash-fill"></i></a>
                       </td>
                   </tr>
