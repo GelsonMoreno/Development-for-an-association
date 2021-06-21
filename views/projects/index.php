@@ -42,3 +42,8 @@ use yii\helpers\Html; ?>
 
 </div>
 
+<?php if ($error != '') : ?>
+    <script>
+        toastr.error("<?= $error ?>");
+    </script>
+<?php endif;?>

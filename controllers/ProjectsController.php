@@ -14,7 +14,12 @@ class ProjectsController extends Controller
         return $this->goHome();
     }
     $projects = $this->get_records();
-    return $this->render('index', ['projects' => $projects]);
+    $error = '';
+    $params = Yii::$app->request->queryParams;
+    if(isset($params['error']) && $params['error']=='1'){
+      $error = 'Desculpa. Não é possivel apagar este registo no momento!';
+    }
+    return $this->render('index', ['projects' => $projects, 'error' => $error]);
 
   }
 
@@ -40,8 +45,14 @@ class ProjectsController extends Controller
       $params = Yii::$app->request->queryParams;
       $projects_id = (int)$params['projects_id'];
       $projects = Projects::findOne(['id'=> $projects_id]);
-      $projects->delete();
-      return $this->redirect(['projects/index']);
+      $error = '';
+      try {
+        $projects->delete();
+      }catch (\yii\db\Exception $e){
+        $error = '1';
+
+    }
+      return $this->redirect(['projects/index', 'error' => $error]);
   }
 
   public function actionUpdate(){

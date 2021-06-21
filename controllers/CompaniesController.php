@@ -11,12 +11,17 @@ use YII;
 class CompaniesController extends Controller
 {
     public function actionIndex(){
-        if (\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-        $companies = $this->get_records();
+      if (\Yii::$app->user->isGuest) {
+          return $this->goHome();
+      }
+      $companies = $this->get_records();
+      $error = '';
+      $params = Yii::$app->request->queryParams;
+      if(isset($params['error']) && $params['error']=='1'){
+        $error = 'Desculpa. Não é possivel apagar este registo no momento!';
+      }
 
-        return $this->render('index', ['companies' => $companies,]);
+      return $this->render('index', ['companies' => $companies, 'error'=> $error]);
 
     }
 
@@ -45,8 +50,13 @@ class CompaniesController extends Controller
         $params = Yii::$app->request->queryParams;
         $companies_id = (int)$params['companies_id'];
         $companies = Companies::findOne(['id'=> $companies_id]);
-        $companies->delete();
-        return $this->redirect(['companies/index']);
+        $error = '';
+        try {
+          $companies->delete();
+        }catch (\yii\db\Exception $e){
+          $error = '1';
+        }
+        return $this->redirect(['companies/index', 'error'=> $error]);
     }
 
     private function get_records(){

@@ -57,8 +57,16 @@ class UsersController extends Controller
         }
         $users->image = $current_file;
         $users->image->saveAs(Yii::$app->basePath . '/web/img/upload/' . 'user_' . $users->id . '_' . $users->image->baseName . '.' . $users->image->extension);
+        $users->updateAttributes(['image' => $current_file]);
       }
-      $users->updateAttributes(['image' => $current_file]);
+    }
+
+    if(isset($params['deleteUserImage']) && $params['deleteUserImage']=='1'){
+      $path = Yii::$app->basePath . '/web/img/upload/' . 'user_' . $users->id . '_' . $users->image ;
+      if (file_exists($path)) {
+        unlink($path);
+      }
+      $users->updateAttributes(['image' => '']);
     }
 
     return $this->render('show', ['model'=>$users]);

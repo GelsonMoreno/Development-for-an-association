@@ -46,11 +46,11 @@ use \yii\bootstrap\ActiveForm;
                     'id' => 'user_new'
                   ]); ?>
                         <div class="photo">
-                            <img id="div_img_tag" src="<?= $model->getUserImg() ?>" />
+                            <img id="div_img_tag" src="<?= $model->getUserImg() ?>" onerror="this.src='img/Profile1.png';"/>
                         </div>
                     <?= $form->field($model, 'image', ['inputOptions'=> ['style'=>["display" => "none"]]])->fileInput() ?>
                     <?= Html::submitButton('Guardar', ['class'=>'btn btn-primary']) ?>
-                    <?= Html::a('Eliminar', ['/users/index'], ['class'=>'btn btn-primary']) ?>
+                    <?= Html::a('Eliminar', ['/users/show', 'users_id' => $model->id, 'deleteUserImage'=> true], ['class'=>'btn btn-primary']) ?>
                   <?php ActiveForm::end(); ?>
                 </div>
                 <script>
