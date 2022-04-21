@@ -61,8 +61,8 @@ class MessageController extends Controller
     $email->addSubstitution("content", $message->text);
 
     #todo: Maybe one day pass this to a config file
-    $email->setTemplateId("d-a71f5e3f0cb3401cb3b54efd2bfcf59b");
-    $sendgrid = new \SendGrid("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");
+    $email->setTemplateId("");
+    $sendgrid = new \SendGrid("");
 
     try {
       $response = $sendgrid->send($email);
